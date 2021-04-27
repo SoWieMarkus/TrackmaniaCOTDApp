@@ -33,12 +33,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 0);
 
-        trackmaniaIOApi.getTOTDMonth(new APIResult<TOTDMonth>() {
-            @Override
-            public void onLoad(TOTDMonth totdMonth) {
-                int x = 1;
-            }
-        }, 1);
-
     }
 }
