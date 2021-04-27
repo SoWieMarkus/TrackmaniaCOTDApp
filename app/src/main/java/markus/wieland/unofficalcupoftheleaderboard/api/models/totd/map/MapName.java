@@ -46,13 +46,31 @@ public class MapName {
                 } else {
                     String color = "$";
 
-                    if (String.valueOf(chars[i+1]).matches("[0-9a-fA-F]"))
+                    if (String.valueOf(chars[i+1]).matches("[0-9a-fA-F]")){
+                        color += chars[i+1] +""+ chars[i+1];
+                    } else {
+                        rules.add("$000000");
+                        continue;
+                    }
 
+                    if (String.valueOf(chars[i+2]).matches("[0-9a-fA-F]")){
+                        color += chars[i+2] +""+ chars[i+2];
+                    } else {
+                        i++;
+                        rules.add(color + "0000");
+                        continue;
+                    }
 
-
-                    String rule = "$" + chars[i + 1] + chars[i + 1] + chars[i + 2] + chars[i + 2] + chars[i + 3] + chars[i + 3];
+                    if (String.valueOf(chars[i+3]).matches("[0-9a-fA-F]")){
+                        color += chars[i+3] +""+ chars[i+3];
+                    } else {
+                        i+=2;
+                        rules.add(color + "00");
+                        continue;
+                    }
+                    
                     i = i + 3;
-                    rules.add(rule);
+                    rules.add(color);
                 }
             } else {
                 rules.add(String.valueOf(currentChar));
