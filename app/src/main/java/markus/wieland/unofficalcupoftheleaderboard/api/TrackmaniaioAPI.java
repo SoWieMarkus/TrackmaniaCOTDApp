@@ -6,6 +6,7 @@ import markus.wieland.defaultappelements.api.API;
 import markus.wieland.defaultappelements.api.APIResult;
 import markus.wieland.defaultappelements.api.GetRequest;
 import markus.wieland.defaultappelements.api.RequestResultListener;
+import markus.wieland.unofficalcupoftheleaderboard.TrackmaniaGetRequest;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.totd.TOTDMonth;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.totd.leaderboard.TOTDLeaderBoard;
 
@@ -22,7 +23,7 @@ public class TrackmaniaioAPI extends API {
 
     public void getTOTDLeaderBoard(APIResult<TOTDLeaderBoard> result, String leaderBoardId, String mapUid) {
         String url = BASE_URL + LEADER_BOARD + leaderBoardId + "/" + mapUid;
-        GetRequest<TOTDLeaderBoard> routesGetRequest = new GetRequest<>(TOTDLeaderBoard.class, url, new RequestResultListener<TOTDLeaderBoard>() {
+        TrackmaniaGetRequest<TOTDLeaderBoard> routesGetRequest = new TrackmaniaGetRequest<>(TOTDLeaderBoard.class, url, new RequestResultListener<TOTDLeaderBoard>() {
             @Override
             public void onLoad(TOTDLeaderBoard response) {
                 notifyClient(response, result);
@@ -38,7 +39,7 @@ public class TrackmaniaioAPI extends API {
 
     public void getTOTDMonth(APIResult<TOTDMonth> result, int monthOffset) {
         String url = BASE_URL + TOTD + monthOffset;
-        GetRequest<TOTDMonth> routesGetRequest = new GetRequest<>(TOTDMonth.class, url, new RequestResultListener<TOTDMonth>() {
+        TrackmaniaGetRequest<TOTDMonth> routesGetRequest = new TrackmaniaGetRequest<>(TOTDMonth.class, url, new RequestResultListener<TOTDMonth>() {
             @Override
             public void onLoad(TOTDMonth response) {
                 notifyClient(response, result);

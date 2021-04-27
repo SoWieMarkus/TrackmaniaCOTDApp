@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Unoffical Cupof the Leaderboard</string>
+    <string name="activity_leaderboard_title_global">Global</string>
+    <string name="activity_leaderboard_title_monthly">Monthly</string>
 </resources>

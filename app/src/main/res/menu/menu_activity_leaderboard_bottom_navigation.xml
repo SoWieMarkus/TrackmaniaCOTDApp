@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_activity_leaderboard_bottom_global"
+        android:icon="@drawable/ic_leaderboard_global"
+        android:title="@string/activity_leaderboard_title_global" />
+    <item
+        android:id="@+id/menu_activity_leaderboard_bottom_monthly"
+        android:icon="@drawable/ic_leaderboard_month"
+        android:title="@string/activity_leaderboard_title_monthly" />
+</menu>

@@ -3,9 +3,10 @@ package markus.wieland.unofficalcupoftheleaderboard.api.models.cotd;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
+import markus.wieland.defaultappelements.uielements.adapter.QueryableEntity;
 import markus.wieland.unofficalcupoftheleaderboard.api.general.Zone;
 
-public class COTDStandingsPlayer {
+public class COTDStandingsPlayer implements QueryableEntity<String> {
 
     @SerializedName("id")
     private String id;
@@ -37,6 +38,11 @@ public class COTDStandingsPlayer {
 
     public String getId() {
         return id;
+    }
+
+    @Override
+    public String getStringToApplyQuery() {
+        return displayName;
     }
 
     public int getAmountFirst() {

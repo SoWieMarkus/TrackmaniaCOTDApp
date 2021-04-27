@@ -1,19 +1,25 @@
 package markus.wieland.unofficalcupoftheleaderboard.api.models.cotd;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
 import markus.wieland.unofficalcupoftheleaderboard.api.general.Zone;
 
 public class COTDPlayerResult {
 
+    @SerializedName("id")
     private String id;
 
+    @SerializedName("accountId")
     private String accountId;
 
+    @SerializedName("displayName")
     private String displayName;
 
+    @SerializedName("zone")
     private String zone;
 
+    @SerializedName("position")
     private int position;
 
     public String getId() {

@@ -1,5 +1,6 @@
 package markus.wieland.unofficalcupoftheleaderboard;
 
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 import markus.wieland.defaultappelements.api.GetRequest;
@@ -13,16 +14,15 @@ public class TrackmaniaGetRequest<T> extends GetRequest<T> {
 
     @Override
     protected Void doInBackground(Void... voids) {
-        //TODO header einfügen
-        /*try {
+        try {
             URL uri = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) uri.openConnection();
+            connection.addRequestProperty("User-Agent","trackmania-leaderboard-app by SoWieMarkus (Markus#2348) https://github.com/SoWieMarkus/TrackmaniaCOTDApp");
             String result = parseResult(connection);
             requestResultListener.onLoad(parse(result));
         } catch (Exception e) {
             requestResultListener.onError(e);
         }
-        return null;*/
         return null;
     }
 }
