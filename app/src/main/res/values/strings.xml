@@ -2,4 +2,7 @@
     <string name="app_name">Unoffical Cupof the Leaderboard</string>
     <string name="activity_leaderboard_title_global">Global</string>
     <string name="activity_leaderboard_title_monthly">Monthly</string>
+    <string name="empty_message">No results.</string>
+    <string name="global_leaderboard">Global Leaderboard</string>
+    <string name="activity_leaderboard_title_totd" translatable="false">Track of the day</string>
 </resources>

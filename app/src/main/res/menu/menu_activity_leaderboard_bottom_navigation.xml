@@ -3,6 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menu_activity_leaderboard_totd"
+        android:icon="@drawable/ic_day"
+        android:title="@string/activity_leaderboard_title_totd" />
+    <item
         android:id="@+id/menu_activity_leaderboard_bottom_global"
         android:icon="@drawable/ic_leaderboard_global"
         android:title="@string/activity_leaderboard_title_global" />

@@ -4,7 +4,6 @@ import android.app.Activity;
 
 import markus.wieland.defaultappelements.api.API;
 import markus.wieland.defaultappelements.api.APIResult;
-import markus.wieland.defaultappelements.api.GetRequest;
 import markus.wieland.defaultappelements.api.RequestResultListener;
 import markus.wieland.unofficalcupoftheleaderboard.TrackmaniaGetRequest;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.totd.TOTDMonth;

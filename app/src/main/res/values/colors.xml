@@ -11,7 +11,9 @@
     <color name="darkBackground">#1f1f1f</color>
 
     <color name="shimmer">#EEEEEE</color>
+    <color name="shimmer_light">#DDDDDD</color>
 
+    <color name="greenBackground">#FC004C36</color>
     <color name="accent_line">#999999</color>
 
 </resources>

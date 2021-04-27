@@ -44,6 +44,12 @@ public class MapName {
                 if (found) {
                     i++;
                 } else {
+                    String color = "$";
+
+                    if (String.valueOf(chars[i+1]).matches("[0-9a-fA-F]"))
+
+
+
                     String rule = "$" + chars[i + 1] + chars[i + 1] + chars[i + 2] + chars[i + 2] + chars[i + 3] + chars[i + 3];
                     i = i + 3;
                     rules.add(rule);
@@ -80,6 +86,7 @@ public class MapName {
     }
 
     private void append(String text) {
+
         if (upperCase) text = text.toUpperCase();
         SpannableString string = new SpannableString(text);
         if (italic && bold)
@@ -90,6 +97,7 @@ public class MapName {
             string.setSpan(new StyleSpan(Typeface.BOLD), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         string.setSpan(new ForegroundColorSpan(Color.parseColor(currentColor)), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.append(string);
+
     }
 
 }

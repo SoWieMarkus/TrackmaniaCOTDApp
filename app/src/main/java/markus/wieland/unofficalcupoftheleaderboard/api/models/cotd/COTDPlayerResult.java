@@ -41,4 +41,8 @@ public class COTDPlayerResult {
     public int getPosition() {
         return position;
     }
+
+    public String getUrl() {
+        return "https://trackmania.io/#/player/" + accountId;
+    }
 }

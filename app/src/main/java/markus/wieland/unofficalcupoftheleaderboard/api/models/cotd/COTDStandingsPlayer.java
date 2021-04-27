@@ -8,6 +8,10 @@ import markus.wieland.unofficalcupoftheleaderboard.api.general.Zone;
 
 public class COTDStandingsPlayer implements QueryableEntity<String> {
 
+    private static final String GOLD = "\uD83E\uDD47";
+    private static final String SILVER = "\uD83E\uDD48";
+    private static final String BRONZE = "\uD83E\uDD49";
+
     @SerializedName("id")
     private String id;
 
@@ -32,6 +36,31 @@ public class COTDStandingsPlayer implements QueryableEntity<String> {
     @SerializedName("points")
     private int points;
 
+    @SerializedName("bestResult")
+    private int bestResult;
+
+    @SerializedName("averagePosition")
+    private int averagePosition;
+
+    @SerializedName("position")
+    private int position;
+
+    public int getBestResult() {
+        return bestResult;
+    }
+
+    public int getAveragePosition() {
+        return averagePosition;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public String getPositionAsString(){
+        return position + ".";
+    }
+
     public Zone getZone() {
         return new Gson().fromJson(zone, Zone.class);
     }
@@ -42,7 +71,11 @@ public class COTDStandingsPlayer implements QueryableEntity<String> {
 
     @Override
     public String getStringToApplyQuery() {
-        return displayName;
+        return getDisplayName();
+    }
+
+    public String getUrl() {
+        return "https://trackmania.io/#/player/" + accountId;
     }
 
     public int getAmountFirst() {
@@ -67,5 +100,21 @@ public class COTDStandingsPlayer implements QueryableEntity<String> {
 
     public int getPoints() {
         return points;
+    }
+
+    public String buildTrophyString() {
+        String trophies = "";
+        if (amountFirst != 0)
+            trophies += GOLD + " " + amountFirst + " ";
+        if (amountSecond != 0)
+            trophies += SILVER + " " + amountSecond + " ";
+        if (amountThird != 0)
+            trophies += BRONZE + " " + amountThird + " ";
+        if (trophies.length() == 0) trophies = "Best finish: " + bestResult + ".";
+        return trophies.trim();
+    }
+
+    public String getPointsAsString() {
+        return String.valueOf(points);
     }
 }
