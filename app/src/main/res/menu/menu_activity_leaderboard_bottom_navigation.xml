@@ -14,4 +14,7 @@
         android:id="@+id/menu_activity_leaderboard_bottom_monthly"
         android:icon="@drawable/ic_leaderboard_month"
         android:title="@string/activity_leaderboard_title_monthly" />
+    <item
+        android:icon="@drawable/ic_info"
+        android:title="Item" />
 </menu>

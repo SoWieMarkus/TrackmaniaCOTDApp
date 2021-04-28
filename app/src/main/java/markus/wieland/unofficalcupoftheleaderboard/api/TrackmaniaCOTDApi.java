@@ -12,7 +12,7 @@ import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.overview.Over
 
 public class TrackmaniaCOTDApi extends API {
 
-    private static final String BASE_URL = "http://85.214.165.29:8080/cotd/";
+    private static final String BASE_URL = "http://sowiemarkus.com:8080/cotd/";
 
     public TrackmaniaCOTDApi(Activity context) {
         super(context);

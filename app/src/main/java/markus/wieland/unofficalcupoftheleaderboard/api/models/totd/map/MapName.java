@@ -68,7 +68,7 @@ public class MapName {
                         rules.add(color + "00");
                         continue;
                     }
-                    
+
                     i = i + 3;
                     rules.add(color);
                 }

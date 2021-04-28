@@ -1,12 +1,14 @@
 package markus.wieland.unofficalcupoftheleaderboard.ui.leaderboard;
 
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import java.time.LocalDateTime;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import markus.wieland.defaultappelements.uielements.adapter.DefaultAdapter;
 import markus.wieland.unofficalcupoftheleaderboard.R;
@@ -19,7 +21,7 @@ import markus.wieland.unofficalcupoftheleaderboard.helper.DateManager;
 import markus.wieland.unofficalcupoftheleaderboard.ui.ListFragment;
 import markus.wieland.unofficalcupoftheleaderboard.ui.leaderboard.LeaderboardAdapter.LeaderboardViewHolder;
 
-public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, LeaderboardViewHolder> implements LeaderboardAdapter.COTDStandingsPlayerOnItemInteractListener {
+public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, LeaderboardViewHolder> implements SearchView.OnQueryTextListener,LeaderboardAdapter.COTDStandingsPlayerOnItemInteractListener {
 
     private LeaderboardAdapter.COTDStandingsPlayerOnItemInteractListener cotdStandingsPlayerOnItemInteractListener;
 
@@ -29,6 +31,8 @@ public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, 
 
     private Button buttonLeftMonth;
     private Button buttonRightMonth;
+
+    private SearchView searchView;
 
     private TextView textViewMonthName;
 
@@ -55,6 +59,7 @@ public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, 
         buttonLeftMonth = findViewById(R.id.fragment_leader_board_monthly_left);
         buttonRightMonth = findViewById(R.id.fragment_leader_board_monthly_right);
         textViewMonthName = findViewById(R.id.item_leader_board_name);
+        searchView = findViewById(R.id.fragment_leader_board_monthly_search_view);
     }
 
     @Override
@@ -73,6 +78,7 @@ public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, 
             overview = getDefaultOverview();
             overViewIndex = 0;
         }
+        searchView.setOnQueryTextListener(this);
 
         updateButtons();
 
@@ -133,5 +139,24 @@ public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, 
     public void onClick(COTDStandingsPlayer cotdStandingsPlayer) {
         if (cotdStandingsPlayerOnItemInteractListener != null)
             cotdStandingsPlayerOnItemInteractListener.onClick(cotdStandingsPlayer);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        if (currentList == null) return false;
+        List<COTDStandingsPlayer> standingsPlayers = new ArrayList<>();
+        for (COTDStandingsPlayer standingsPlayer : currentList) {
+            if (standingsPlayer.getStringToApplyQuery().toLowerCase().contains(s.toLowerCase())) {
+                standingsPlayers.add(standingsPlayer);
+            }
+        }
+        update(standingsPlayers, false);
+        if (!standingsPlayers.isEmpty()) recyclerView.scrollToPosition(0);
+        return true;
     }
 }

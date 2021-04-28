@@ -12,11 +12,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 import markus.wieland.defaultappelements.uielements.activities.DefaultActivity;
-import markus.wieland.unofficalcupoftheleaderboard.R;
 import markus.wieland.unofficalcupoftheleaderboard.api.TrackmaniaCOTDApi;
-import markus.wieland.unofficalcupoftheleaderboard.api.TrackmaniaioAPI;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.COTDLeaderBoard;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.COTDStandingsPlayer;
+import markus.wieland.unofficalcupoftheleaderboard.api.models.totd.TOTD;
 import markus.wieland.unofficalcupoftheleaderboard.ui.leaderboard.LeaderBoardGlobalFragment;
 import markus.wieland.unofficalcupoftheleaderboard.ui.leaderboard.LeaderBoardMonthFragment;
 import markus.wieland.unofficalcupoftheleaderboard.ui.leaderboard.LeaderboardAdapter;
@@ -47,7 +46,18 @@ public class LeaderboardActivity extends DefaultActivity implements LeaderboardA
         monthStandings = new LeaderBoardMonthFragment();
         monthStandings.setCotdStandingsPlayerOnItemInteractListener(this);
         totdFragment = new TOTDMainFragment();
+        totdFragment.setTotdItemInteractListener(this::onClick);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+    }
+
+    public void onClick(TOTD totd) {
+        TOTDFragment totdDetailFragment = new TOTDFragment();
+        totdDetailFragment.load(totd);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.activity_leaderboard_frame_layout
+                        , totdDetailFragment)
+                .addToBackStack(totdFragment.getTag())
+                .commit();
     }
 
     @Override
@@ -78,11 +88,13 @@ public class LeaderboardActivity extends DefaultActivity implements LeaderboardA
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menu_activity_leaderboard_bottom_global) {
             showFragment(globalStandings);
-        } else if (item.getItemId() == R.id.menu_activity_leaderboard_bottom_monthly){
+        } else if (item.getItemId() == R.id.menu_activity_leaderboard_bottom_monthly) {
             showFragment(monthStandings);
         } else {
             showFragment(totdFragment);
         }
         return true;
     }
+
+
 }

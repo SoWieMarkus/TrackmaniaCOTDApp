@@ -15,9 +15,12 @@ import markus.wieland.defaultappelements.uielements.adapter.DefaultViewHolder;
 import markus.wieland.defaultappelements.uielements.adapter.iteractlistener.OnItemInteractListener;
 import markus.wieland.unofficalcupoftheleaderboard.R;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.totd.TOTD;
+import markus.wieland.unofficalcupoftheleaderboard.api.models.totd.TOTDMonth;
 import markus.wieland.unofficalcupoftheleaderboard.helper.StyleConverter;
 
 public class TOTDAdapter extends DefaultAdapter<TOTD, TOTDAdapter.TOTDViewHolder> {
+
+    private TOTDMonth totdMonth;
 
     public interface TOTDItemInteractListener extends OnItemInteractListener<TOTD> {
         void onClick(TOTD totd);
@@ -38,12 +41,17 @@ public class TOTDAdapter extends DefaultAdapter<TOTD, TOTDAdapter.TOTDViewHolder
         return (TOTDItemInteractListener) super.getOnItemInteractListener();
     }
 
+    public void setTotdMonth(TOTDMonth totdMonth) {
+        this.totdMonth = totdMonth;
+    }
+
     public class TOTDViewHolder extends DefaultViewHolder<TOTD> {
 
         private ImageView itemTotdThumbnail;
         private TextView itemTotdAuthor;
         private TextView itemTotdName;
         private TextView itemTotdScore;
+        private TextView itemTotdDay;
 
         public TOTDViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -55,6 +63,7 @@ public class TOTDAdapter extends DefaultAdapter<TOTD, TOTDAdapter.TOTDViewHolder
             itemTotdName = findViewById(R.id.item_totd_name);
             itemTotdScore = findViewById(R.id.item_totd_score);
             itemTotdThumbnail = findViewById(R.id.item_totd_thumbnail);
+            itemTotdDay = findViewById(R.id.item_totd_day);
         }
 
         @Override
@@ -64,6 +73,13 @@ public class TOTDAdapter extends DefaultAdapter<TOTD, TOTDAdapter.TOTDViewHolder
             itemTotdAuthor.setText(totd.getMap().getAuthorDisplayName());
             itemTotdScore.setText(StyleConverter.buildAsTimeString(totd.getMap().getAuthorScore()));
             itemView.setOnClickListener(view -> getOnItemInteractListener().onClick(totd));
+            itemTotdDay.setText(getDate(totd));
+        }
+
+        private String getDate(TOTD totd) {
+            return StyleConverter.build(totd.getDayOfMonth(), 2) + "."
+                    + StyleConverter.build(totdMonth.getMonth(), 2) + "."
+                    + totdMonth.getYear();
         }
     }
 }
