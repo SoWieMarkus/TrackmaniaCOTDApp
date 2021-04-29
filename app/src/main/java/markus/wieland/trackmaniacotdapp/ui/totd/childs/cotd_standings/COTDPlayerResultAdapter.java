@@ -12,14 +12,14 @@ import com.bumptech.glide.Glide;
 
 import markus.wieland.defaultappelements.uielements.adapter.DefaultViewHolder;
 import markus.wieland.defaultappelements.uielements.adapter.QueryableAdapter;
-import markus.wieland.defaultappelements.uielements.adapter.iteractlistener.OnItemInteractListener;
 import markus.wieland.trackmaniacotdapp.R;
 import markus.wieland.trackmaniacotdapp.api.models.cotd.COTDPlayerResult;
+import markus.wieland.trackmaniacotdapp.helper.OnClickListener;
 
 public class COTDPlayerResultAdapter extends QueryableAdapter<String, COTDPlayerResult, COTDPlayerResultAdapter.COTDPlayerResultViewHolder> {
 
 
-    public COTDPlayerResultAdapter(OnItemInteractListener<COTDPlayerResult> onItemInteractListener) {
+    public COTDPlayerResultAdapter(OnClickListener<COTDPlayerResult> onItemInteractListener) {
         super(onItemInteractListener);
     }
 
@@ -29,7 +29,12 @@ public class COTDPlayerResultAdapter extends QueryableAdapter<String, COTDPlayer
         return new COTDPlayerResultViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_standings_player, parent, false));
     }
 
-    public static class COTDPlayerResultViewHolder extends DefaultViewHolder<COTDPlayerResult> {
+    @Override
+    public OnClickListener<COTDPlayerResult> getOnItemInteractListener() {
+        return (OnClickListener<COTDPlayerResult>) super.getOnItemInteractListener();
+    }
+
+    public class COTDPlayerResultViewHolder extends DefaultViewHolder<COTDPlayerResult> {
 
         private TextView itemStandingsName;
         private TextView itemStandingsRank;
@@ -54,6 +59,7 @@ public class COTDPlayerResultAdapter extends QueryableAdapter<String, COTDPlayer
             itemStandingsScore.setText(cotdPlayerResult.getPoints());
             itemStandingsRank.setText(cotdPlayerResult.getPositionAsString());
             Glide.with(itemView.getContext()).load(cotdPlayerResult.getZone().getFlagUrl()).into(itemStandingsFlag);
+            itemView.setOnClickListener(view -> getOnItemInteractListener().onClick(cotdPlayerResult));
         }
     }
 

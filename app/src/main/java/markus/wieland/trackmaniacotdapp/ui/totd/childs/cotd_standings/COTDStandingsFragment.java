@@ -16,7 +16,7 @@ public class COTDStandingsFragment extends ListFragment<COTDPlayerResult, COTDPl
 
     @Override
     public COTDPlayerResultAdapter getAdapter() {
-        return new COTDPlayerResultAdapter(null);
+        return new COTDPlayerResultAdapter(this);
     }
 
     @Override
