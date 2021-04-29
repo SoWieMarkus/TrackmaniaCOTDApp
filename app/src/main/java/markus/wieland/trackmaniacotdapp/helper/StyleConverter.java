@@ -14,13 +14,8 @@ public class StyleConverter {
 
     public static String build(long value, long max) {
         if (max == 2) return value < 10 ? "0" + value : value + "";
-        else return value < 10 ? "00" + value : value < 100 ? "0" + value : value + "";
-    }
-
-    public static String buildDifference(long scoreInMillis){
-        long millis = scoreInMillis % 1000;
-        long seconds = scoreInMillis / 1000;
-        return "+" + seconds + "." + build(millis, 3);
+        if (value < 10) return "00" +value;
+        return  value < 100 ? "0" + value : value + "";
     }
 
     public static String getStringFromPosition(int position){
