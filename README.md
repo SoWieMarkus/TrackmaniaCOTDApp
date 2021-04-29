@@ -2,6 +2,25 @@
 
 DISCLAIMER! This project is not related to Nadeo! Its a fan made project to generate and display a leaderboard for the Trackmania Cup of the Day.
 
+This project is based on the work of <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwjM2OoIEWwoiKy1CqMY9oKJ2EXqWvch_gPIrOzL8WtsSoYZ-KjsiZpR3Ygt3U08VW9fxFpRyv6R/pubhtml#">pointerzio</a>! Unfortunately he stopped working on this project.
+
+## Credits
+
+Thanks to:
+
+* <a href="https://github.com/codecat">@CodeCat</a> for letting me use the trackmania.io API
+* <a href="https://www.twitch.tv/granadyy">GranaDy</a> for letting me use his "granaBonk" emote inside my app. Make sure to checkout out his twitch channel for Cup of the Day WINNER POV.
+* <a href="https://github.com/Bmandk">@Bmandk</a> and axelalex2 for helping me debug the Trackmania style parser ^^
+* <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwjM2OoIEWwoiKy1CqMY9oKJ2EXqWvch_gPIrOzL8WtsSoYZ-KjsiZpR3Ygt3U08VW9fxFpRyv6R/pubhtml#">pointerzio</a>
+
+
+## Questions?
+
+Feel free to contact me!
+
+Twitter: <a href="https://twitter.com/SoWieMarkus">@SoWieMarkus</a>
+Discord: Markus#2348
+
 ## Used technologies
 
 * <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDRestAPI">Trackmania COTD Rest API</a> (my own API). See documentation <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDRestAPI#readme">here</a>.
@@ -11,6 +30,17 @@ DISCLAIMER! This project is not related to Nadeo! Its a fan made project to gene
 * <a href="https://github.com/SoWieMarkus/DefaultAppComponents">DefaultAppComponents</a>
 
 ## How does it work
+
+I am using the results of the Cup of the Day from trackmania.io. There are some days missing or incompleted. Those dates are:
+
+* 10.12.2020, reason unknown
+* 04.01.2021, reason unknown. GranaDy said on this day you were able to vote.
+* 27.-28.01.2021 Server issues
+* 29.-30.01.2021 reason unknown
+
+I did not correct any of this results! They are still as you can find them on trackmania.io. There are other leaderboards who corrected those days by hand. This can lead to different results.
+
+For creating the leaderboard I am using the point system used by <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwjM2OoIEWwoiKy1CqMY9oKJ2EXqWvch_gPIrOzL8WtsSoYZ-KjsiZpR3Ygt3U08VW9fxFpRyv6R/pubhtml#">pointerzio</a>.
 
 ### Get results from Cup of the Day
 
@@ -111,14 +141,7 @@ GET `https://trackmania.io/api/leaderboard/<leaderboarduid>/<mapUid>`
   },
   ...
 }
+```
 
 
 
-
-
-
-CodeCat has a nice feature to page the results. The page parameter can be any number bigger or equal to zero. If you call https://trackmania.io/api/cotd/0 you will get the first (normally) 25 results. If you need more information you can call https://trackmania.io/api/cotd/1 afterwards to get the next 25 results.
-
-
-
-## Credits
