@@ -1,10 +1,14 @@
 package markus.wieland.unofficalcupoftheleaderboard.api.models.cotd;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import markus.wieland.defaultappelements.uielements.adapter.QueryableEntity;
+import markus.wieland.unofficalcupoftheleaderboard.R;
 import markus.wieland.unofficalcupoftheleaderboard.api.general.Zone;
+import markus.wieland.unofficalcupoftheleaderboard.helper.StyleConverter;
 
 public class COTDStandingsPlayer implements QueryableEntity<String> {
 
@@ -57,7 +61,7 @@ public class COTDStandingsPlayer implements QueryableEntity<String> {
         return position;
     }
 
-    public String getPositionAsString(){
+    public String getPositionAsString() {
         return position + ".";
     }
 
@@ -102,7 +106,11 @@ public class COTDStandingsPlayer implements QueryableEntity<String> {
         return points;
     }
 
-    public String buildTrophyString() {
+    public String getAveragePositionAsString(Context context){
+        return context.getString(R.string.average_position) + " " + StyleConverter.getStringFromPosition(averagePosition);
+    }
+
+    public String buildTrophyString(Context context) {
         String trophies = "";
         if (amountFirst != 0)
             trophies += GOLD + " " + amountFirst + " ";
@@ -110,7 +118,8 @@ public class COTDStandingsPlayer implements QueryableEntity<String> {
             trophies += SILVER + " " + amountSecond + " ";
         if (amountThird != 0)
             trophies += BRONZE + " " + amountThird + " ";
-        if (trophies.length() == 0) trophies = "Best finish: " + bestResult + ".";
+        if (trophies.length() == 0)
+            trophies = context.getString(R.string.best_finish) + " " + bestResult + ".";
         return trophies.trim();
     }
 

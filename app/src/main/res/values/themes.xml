@@ -1,21 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.UnofficalCupofTheLeaderboard" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.UnofficalCupofTheLeaderboard" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#009B5F</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/darkBackground</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">#004C36</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/main_background</item>
         <!-- Customize your theme here. -->
-
-        <item name="main_background">@drawable/background</item>
+        <item name="main_background">@color/darkBackground</item>
         <item name="main_icon_color">@color/white</item>
         <item name="main_text_color">@color/white</item>
+        <item name="light_text_color">@color/light_text</item>
 
     </style>
 </resources>

@@ -12,22 +12,20 @@ import com.bumptech.glide.Glide;
 
 import markus.wieland.defaultappelements.uielements.adapter.DefaultAdapter;
 import markus.wieland.defaultappelements.uielements.adapter.DefaultViewHolder;
-import markus.wieland.defaultappelements.uielements.adapter.iteractlistener.OnItemInteractListener;
 import markus.wieland.unofficalcupoftheleaderboard.R;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.totd.TOTD;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.totd.TOTDMonth;
+import markus.wieland.unofficalcupoftheleaderboard.helper.DateManager;
+import markus.wieland.unofficalcupoftheleaderboard.helper.OnClickListener;
 import markus.wieland.unofficalcupoftheleaderboard.helper.StyleConverter;
 
 public class TOTDAdapter extends DefaultAdapter<TOTD, TOTDAdapter.TOTDViewHolder> {
 
     private TOTDMonth totdMonth;
 
-    public interface TOTDItemInteractListener extends OnItemInteractListener<TOTD> {
-        void onClick(TOTD totd);
-    }
 
-    public TOTDAdapter(TOTDItemInteractListener onItemInteractListener) {
-        super(onItemInteractListener);
+    public TOTDAdapter(OnClickListener<TOTD> onClickListener) {
+        super(onClickListener);
     }
 
     @NonNull
@@ -37,8 +35,8 @@ public class TOTDAdapter extends DefaultAdapter<TOTD, TOTDAdapter.TOTDViewHolder
     }
 
     @Override
-    public TOTDItemInteractListener getOnItemInteractListener() {
-        return (TOTDItemInteractListener) super.getOnItemInteractListener();
+    public OnClickListener<TOTD> getOnItemInteractListener() {
+        return (OnClickListener<TOTD>) super.getOnItemInteractListener();
     }
 
     public void setTotdMonth(TOTDMonth totdMonth) {
@@ -73,13 +71,7 @@ public class TOTDAdapter extends DefaultAdapter<TOTD, TOTDAdapter.TOTDViewHolder
             itemTotdAuthor.setText(totd.getMap().getAuthorDisplayName());
             itemTotdScore.setText(StyleConverter.buildAsTimeString(totd.getMap().getAuthorScore()));
             itemView.setOnClickListener(view -> getOnItemInteractListener().onClick(totd));
-            itemTotdDay.setText(getDate(totd));
-        }
-
-        private String getDate(TOTD totd) {
-            return StyleConverter.build(totd.getDayOfMonth(), 2) + "."
-                    + StyleConverter.build(totdMonth.getMonth(), 2) + "."
-                    + totdMonth.getYear();
+            itemTotdDay.setText(DateManager.getDateWithDayName(totdMonth.getYear(), totdMonth.getMonth(), totd.getDayOfMonth()));
         }
     }
 }

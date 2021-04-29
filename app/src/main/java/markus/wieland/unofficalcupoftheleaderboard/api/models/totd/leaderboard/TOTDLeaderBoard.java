@@ -9,4 +9,7 @@ public class TOTDLeaderBoard {
     @SerializedName("tops")
     private List<TOTDLeaderBoardPlayer> tops;
 
+    public List<TOTDLeaderBoardPlayer> getTops() {
+        return tops;
+    }
 }

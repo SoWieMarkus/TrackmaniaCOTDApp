@@ -1,21 +1,26 @@
 package markus.wieland.unofficalcupoftheleaderboard.ui.totd;
 
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import java.time.LocalDateTime;
 import java.time.format.TextStyle;
+import java.util.ArrayList;
 import java.util.Collections;
 
+import markus.wieland.unofficalcupoftheleaderboard.helper.OnClickListener;
 import markus.wieland.unofficalcupoftheleaderboard.R;
 import markus.wieland.unofficalcupoftheleaderboard.api.TrackmaniaioAPI;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.totd.TOTD;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.totd.TOTDMonth;
 import markus.wieland.unofficalcupoftheleaderboard.helper.DateManager;
-import markus.wieland.unofficalcupoftheleaderboard.ui.ListFragment;
+import markus.wieland.unofficalcupoftheleaderboard.helper.ListFragment;
 
-public class TOTDMainFragment extends ListFragment<TOTD, TOTDAdapter.TOTDViewHolder> implements TOTDAdapter.TOTDItemInteractListener {
+public class TOTDMainFragment extends ListFragment<TOTD, TOTDAdapter.TOTDViewHolder> implements OnClickListener<TOTD>, SwipeRefreshLayout.OnRefreshListener  {
+
+    private OnClickListener<TOTD> totdOnClickListener;
 
     private int index;
 
@@ -25,6 +30,8 @@ public class TOTDMainFragment extends ListFragment<TOTD, TOTDAdapter.TOTDViewHol
     private TextView textViewMonthName;
 
     private TrackmaniaioAPI trackmaniaioAPI;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public TOTDMainFragment() {
         super(R.layout.fragment_totd_main, R.id.fragment_totd_main_recycler_view, R.id.fragment_totd_main_progress_bar, R.id.fragment_totd_main_empty);
@@ -36,10 +43,8 @@ public class TOTDMainFragment extends ListFragment<TOTD, TOTDAdapter.TOTDViewHol
         return new TOTDAdapter(this);
     }
 
-    private TOTDAdapter.TOTDItemInteractListener totdItemInteractListener;
-
-    public void setTotdItemInteractListener(TOTDAdapter.TOTDItemInteractListener totdItemInteractListener) {
-        this.totdItemInteractListener = totdItemInteractListener;
+    public void setTotdOnClickListener(OnClickListener<TOTD> totdOnClickListener) {
+        this.totdOnClickListener = totdOnClickListener;
     }
 
     @Override
@@ -48,14 +53,13 @@ public class TOTDMainFragment extends ListFragment<TOTD, TOTDAdapter.TOTDViewHol
         textViewMonthName = findViewById(R.id.fragment_totd_main_name);
         buttonLeftMonth = findViewById(R.id.fragment_totd_main_left);
         buttonRightMonth = findViewById(R.id.fragment_totd_main_right);
+        swipeRefreshLayout = findViewById(R.id.fragment_totd_main_swipe_refresh);
     }
 
     @Override
     public void execute() {
         super.execute();
-
         trackmaniaioAPI = new TrackmaniaioAPI(getActivity());
-
         updateButtons();
         search();
     }
@@ -71,26 +75,34 @@ public class TOTDMainFragment extends ListFragment<TOTD, TOTDAdapter.TOTDViewHol
             index--;
             search();
         });
+        swipeRefreshLayout.setOnRefreshListener(this);
     }
 
-    private void search(){
+    private void search() {
         buttonLeftMonth.setEnabled(false);
         buttonRightMonth.setEnabled(false);
         update(null, true);
         trackmaniaioAPI.getTOTDMonth(this::onLoad, index);
     }
 
-    private void updateButtons(){
+    private void updateButtons() {
         LocalDateTime now = LocalDateTime.now();
-        textViewMonthName.setText(DateManager.getNameOfMonth(now.minusMonths(index).getMonthValue()) + " " + now.getYear());
+        textViewMonthName.setText(DateManager.getStringFromMonthAndYear(now.getYear(), now.minusMonths(index).getMonthValue()));
         buttonRightMonth.setEnabled(index > 0);
         buttonLeftMonth.setEnabled(!isLastPossibleMonth());
-        buttonLeftMonth.setText(DateManager.getNameOfMonth(now.minusMonths(index + (long)1).getMonthValue(), TextStyle.SHORT_STANDALONE));
-        buttonRightMonth.setText(DateManager.getNameOfMonth(now.minusMonths(index - (long)1).getMonthValue(), TextStyle.SHORT_STANDALONE));
+        buttonLeftMonth.setText(DateManager.getNameOfMonth(now.minusMonths(index + (long) 1).getMonthValue(), TextStyle.SHORT_STANDALONE));
+        buttonRightMonth.setText(DateManager.getNameOfMonth(now.minusMonths(index - (long) 1).getMonthValue(), TextStyle.SHORT_STANDALONE));
     }
 
     private void onLoad(TOTDMonth totdMonth) {
-        ((TOTDAdapter)adapter).setTotdMonth(totdMonth);
+        if (totdMonth == null){
+            update(new ArrayList<>(), true);
+            updateButtons();
+            return;
+        }
+        swipeRefreshLayout.setRefreshing(false);
+
+        ((TOTDAdapter) adapter).setTotdMonth(totdMonth);
         Collections.reverse(totdMonth.getDays());
         update(totdMonth.getDays(), true);
         updateButtons();
@@ -98,13 +110,25 @@ public class TOTDMainFragment extends ListFragment<TOTD, TOTDAdapter.TOTDViewHol
 
     @Override
     public void onClick(TOTD totd) {
-        if (totdItemInteractListener != null)
-            totdItemInteractListener.onClick(totd);
+        LocalDateTime currentMonth = getCurrentMonth();
+        totd.setMonth(currentMonth.getMonthValue());
+        totd.setYear(currentMonth.getYear());
+        if (totdOnClickListener != null)
+            totdOnClickListener.onClick(totd);
     }
 
-    public boolean isLastPossibleMonth(){
+    private LocalDateTime getCurrentMonth() {
+        return LocalDateTime.now().minusMonths(index);
+    }
+
+    public boolean isLastPossibleMonth() {
         LocalDateTime now = LocalDateTime.now();
         now = now.minusMonths(index);
         return now.getYear() == 2020 && now.getMonthValue() == 7;
+    }
+
+    @Override
+    public void onRefresh() {
+        search();
     }
 }

@@ -9,6 +9,7 @@ import markus.wieland.unofficalcupoftheleaderboard.TrackmaniaGetRequest;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.COTD;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.COTDLeaderBoard;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.overview.Overview;
+import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.summary.PlayerSummary;
 
 public class TrackmaniaCOTDApi extends API {
 
@@ -28,7 +29,7 @@ public class TrackmaniaCOTDApi extends API {
 
             @Override
             public void onError(Exception e) {
-                e.printStackTrace();
+                notifyClient(null, result);
             }
         });
         getRequest.execute();
@@ -71,6 +72,38 @@ public class TrackmaniaCOTDApi extends API {
         TrackmaniaGetRequest<Overview> getRequest = new TrackmaniaGetRequest<>(Overview.class, url, new RequestResultListener<Overview>() {
             @Override
             public void onLoad(Overview response) {
+                notifyClient(response, result);
+            }
+
+            @Override
+            public void onError(Exception e) {
+                notifyClient(null, result);
+            }
+        });
+        getRequest.execute();
+    }
+
+    public void getGlobalSummary(APIResult<PlayerSummary> result, String accountId) {
+        String url = BASE_URL + "global/" + accountId;
+        TrackmaniaGetRequest<PlayerSummary> getRequest = new TrackmaniaGetRequest<>(PlayerSummary.class, url, new RequestResultListener<PlayerSummary>() {
+            @Override
+            public void onLoad(PlayerSummary response) {
+                notifyClient(response, result);
+            }
+
+            @Override
+            public void onError(Exception e) {
+                notifyClient(null, result);
+            }
+        });
+        getRequest.execute();
+    }
+
+    public void getMonthlySummary(APIResult<PlayerSummary> result, String accountId, int year, int month) {
+        String url = BASE_URL + "summary/" + year + "/" + month + "/" + accountId;
+        TrackmaniaGetRequest<PlayerSummary> getRequest = new TrackmaniaGetRequest<>(PlayerSummary.class, url, new RequestResultListener<PlayerSummary>() {
+            @Override
+            public void onLoad(PlayerSummary response) {
                 notifyClient(response, result);
             }
 

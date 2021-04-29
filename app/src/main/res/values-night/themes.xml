@@ -14,8 +14,8 @@
         <!-- Customize your theme here. -->
         <item name="main_background">@color/darkBackground</item>
         <item name="main_icon_color">@color/white</item>
-        <item name="colorSurface">@color/darkBackground</item>
         <item name="main_text_color">@color/white</item>
+        <item name="light_text_color">@color/light_text</item>
 
     </style>
 </resources>

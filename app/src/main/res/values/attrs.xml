@@ -4,6 +4,7 @@
     <attr name="main_background" format="color|reference"/>
     <attr name="main_icon_color" format="color|reference"/>
     <attr name="main_text_color" format="color|reference"/>
+    <attr name="light_text_color" format="color|reference"/>
 
 
 </resources>

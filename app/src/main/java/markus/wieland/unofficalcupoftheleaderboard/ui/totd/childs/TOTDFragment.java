@@ -1,9 +1,8 @@
-package markus.wieland.unofficalcupoftheleaderboard.ui.totd;
+package markus.wieland.unofficalcupoftheleaderboard.ui.totd.childs;
 
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -18,7 +17,18 @@ import markus.wieland.defaultappelements.uielements.fragments.DefaultFragment;
 import markus.wieland.defaultappelements.uielements.viewpager.ViewPageAdapter;
 import markus.wieland.defaultappelements.uielements.viewpager.ViewPageAdapterItem;
 import markus.wieland.unofficalcupoftheleaderboard.R;
+import markus.wieland.unofficalcupoftheleaderboard.api.TrackmaniaCOTDApi;
+import markus.wieland.unofficalcupoftheleaderboard.api.TrackmaniaioAPI;
+import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.COTD;
+import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.COTDPlayerResult;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.totd.TOTD;
+import markus.wieland.unofficalcupoftheleaderboard.api.models.totd.leaderboard.TOTDLeaderBoard;
+import markus.wieland.unofficalcupoftheleaderboard.api.models.totd.leaderboard.TOTDLeaderBoardPlayer;
+import markus.wieland.unofficalcupoftheleaderboard.helper.ListFragment;
+import markus.wieland.unofficalcupoftheleaderboard.ui.totd.childs.cotd_standings.COTDPlayerResultAdapter;
+import markus.wieland.unofficalcupoftheleaderboard.ui.totd.childs.cotd_standings.COTDStandingsFragment;
+import markus.wieland.unofficalcupoftheleaderboard.ui.totd.childs.totd_standings.TOTDLeaderBoardAdapter;
+import markus.wieland.unofficalcupoftheleaderboard.ui.totd.childs.totd_standings.TOTDStandingsFragment;
 
 public class TOTDFragment extends DefaultFragment {
 
@@ -29,7 +39,13 @@ public class TOTDFragment extends DefaultFragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+    private TrackmaniaioAPI trackmaniaioAPI;
+    private TrackmaniaCOTDApi trackmaniaCOTDApi;
+
     private final MapScoreAdapter mapScoreAdapter;
+
+    private ListFragment<TOTDLeaderBoardPlayer, TOTDLeaderBoardAdapter.TOTDLeaderBoardViewHolder> totdStandings;
+    private ListFragment<COTDPlayerResult, COTDPlayerResultAdapter.COTDPlayerResultViewHolder> cotdStandings;
 
     private TOTD currentTOTD;
 
@@ -54,7 +70,13 @@ public class TOTDFragment extends DefaultFragment {
         recyclerViewTotdTimes.setHasFixedSize(true);
         recyclerViewTotdTimes.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
+        totdStandings = new TOTDStandingsFragment();
+        cotdStandings = new COTDStandingsFragment();
+
         List<ViewPageAdapterItem> viewPageAdapterItems = new ArrayList<>();
+        viewPageAdapterItems.add(new ViewPageAdapterItem(getString(R.string.fragment_totd_title_totd_standings), totdStandings));
+        viewPageAdapterItems.add(new ViewPageAdapterItem(getString(R.string.fragment_totd_title_cotd_results), cotdStandings));
+
         ViewPageAdapter viewPageAdapter = new ViewPageAdapter(getChildFragmentManager(), viewPageAdapterItems);
         viewPager.setAdapter(viewPageAdapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -62,6 +84,8 @@ public class TOTDFragment extends DefaultFragment {
 
     @Override
     public void execute() {
+        trackmaniaioAPI = new TrackmaniaioAPI(getActivity());
+        trackmaniaCOTDApi = new TrackmaniaCOTDApi(getActivity());
         if (currentTOTD == null) return;
         updateViews();
     }
@@ -69,7 +93,6 @@ public class TOTDFragment extends DefaultFragment {
     public void load(TOTD totd) {
         this.currentTOTD = totd;
         this.mapScoreAdapter.submitList(totd.getMap());
-
         if (imageViewThumbnail == null) return;
         updateViews();
     }
@@ -79,6 +102,24 @@ public class TOTDFragment extends DefaultFragment {
         Glide.with(getActivity()).load(currentTOTD.getMap().getThumbnailUrl()).into(imageViewThumbnail);
         textViewMapName.setText(currentTOTD.getMap().getColoredMapName());
         textViewMapAuthor.setText(currentTOTD.getMap().getAuthorDisplayName());
+        trackmaniaioAPI.getTOTDLeaderBoard(this::onLoad,  currentTOTD.getLeaderBoardUid(),currentTOTD.getMap().getMapUid());
+        trackmaniaCOTDApi.getCOTDResult(this::onLoad, currentTOTD.getYear(), currentTOTD.getMonth(), currentTOTD.getDayOfMonth());
+    }
+
+    public void onLoad(TOTDLeaderBoard totdLeaderBoard) {
+        if (totdLeaderBoard == null){
+            totdStandings.update(new ArrayList<>(),true);
+            return;
+        }
+        totdStandings.update(totdLeaderBoard.getTops(), true);
+    }
+
+    public void onLoad(COTD cotd) {
+        if (cotd == null){
+            cotdStandings.update(new ArrayList<>(),true);
+            return;
+        }
+        cotdStandings.update(cotd.getStandings(), true);
     }
 
 

@@ -36,6 +36,10 @@ public class Zone {
     }
 
     public String getFlagUrl() {
-        return "https://trackmania.io/img/flags/" + flag + ".jpg";
+        return "https://trackmania.io/img/flags/" + getShownFlag() + ".jpg";
+    }
+
+    public String getShownFlag(){
+        return flag.matches("[A-Z][A-Z][A-Z]") ? flag : parent.getShownFlag();
     }
 }

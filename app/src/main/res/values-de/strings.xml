@@ -5,4 +5,9 @@
     <string name="activity_leaderboard_title_monthly">Monatlich</string>
     <string name="empty_message">Keine Ergebnisse.</string>
     <string name="global_leaderboard">Global Leaderboard</string>
+    <string name="activity_leaderboard_title_about">Informationen</string>
+    <string name="fragment_totd_title_cotd_results">Ergebnisse</string>
+    <string name="best_finish">Bestes Ergebnis:</string>
+    <string name="average_position">Ø Position:</string>
+    <string name="content_description_empty">Keine Ergebnisse.</string>
 </resources>

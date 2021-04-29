@@ -30,7 +30,7 @@ public class TrackmaniaioAPI extends API {
 
             @Override
             public void onError(Exception e) {
-                e.printStackTrace();
+                notifyClient(null, result);
             }
         });
         routesGetRequest.execute();
@@ -46,7 +46,7 @@ public class TrackmaniaioAPI extends API {
 
             @Override
             public void onError(Exception e) {
-                e.printStackTrace();
+                notifyClient(null, result);
             }
         });
         routesGetRequest.execute();

@@ -31,7 +31,7 @@ public class COTD {
     private int players;
 
     @SerializedName("playerResult")
-    private List<COTDStandingsPlayer> standings;
+    private List<COTDPlayerResult> standings;
 
     public int getId() {
         return id;
@@ -65,7 +65,7 @@ public class COTD {
         return players;
     }
 
-    public List<COTDStandingsPlayer> getStandings() {
+    public List<COTDPlayerResult> getStandings() {
         return standings;
     }
 }

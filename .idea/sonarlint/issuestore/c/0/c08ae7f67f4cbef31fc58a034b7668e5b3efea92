@@ -1,3 +1,10 @@
 
+n
+java:S11921"LDefine a constant instead of duplicating this literal "[0-9a-fA-F]" 3 times.(ºüôâûÿÿÿÿ8£“ö¬‘/
+y	java:S127H"XRefactor the code in order to not assign to this loop counter from within the loop body.(©éø¤ûÿÿÿÿ8µøñ¬‘/
+z	java:S135 "YReduce the total number of break and continue statements in this loop to use at most one.(ğÊ™ëüÿÿÿÿ8µøñ¬‘/
+t
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(‹îıÿÿÿÿ8£¬ê¬‘/
+y	java:S127C"XRefactor the code in order to not assign to this loop counter from within the loop body.( æƒ«ıÿÿÿÿ8ó•ò¬‘/
 t	java:S127-"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8Ÿ©•ğ/
-y	java:S1270"XRefactor the code in order to not assign to this loop counter from within the loop body.(©éø¤ûÿÿÿÿ8Ÿ©•ğ/
+t	java:S127;"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8ÊÂğ¬‘/

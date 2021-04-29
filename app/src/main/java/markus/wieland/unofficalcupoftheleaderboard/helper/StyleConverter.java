@@ -23,4 +23,9 @@ public class StyleConverter {
         return "+" + seconds + "." + build(millis, 3);
     }
 
+    public static String getStringFromPosition(int position){
+        if (position == 0) return "DNF";
+        return position + ".";
+    }
+
 }

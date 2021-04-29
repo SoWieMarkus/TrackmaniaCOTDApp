@@ -1,7 +1,5 @@
 package markus.wieland.unofficalcupoftheleaderboard;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -9,26 +7,27 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
-
 import markus.wieland.defaultappelements.uielements.activities.DefaultActivity;
-import markus.wieland.unofficalcupoftheleaderboard.api.TrackmaniaCOTDApi;
-import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.COTDLeaderBoard;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.COTDStandingsPlayer;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.totd.TOTD;
+import markus.wieland.unofficalcupoftheleaderboard.ui.about.AboutFragment;
 import markus.wieland.unofficalcupoftheleaderboard.ui.leaderboard.LeaderBoardGlobalFragment;
 import markus.wieland.unofficalcupoftheleaderboard.ui.leaderboard.LeaderBoardMonthFragment;
-import markus.wieland.unofficalcupoftheleaderboard.ui.leaderboard.LeaderboardAdapter;
-import markus.wieland.unofficalcupoftheleaderboard.ui.totd.TOTDFragment;
+import markus.wieland.unofficalcupoftheleaderboard.ui.leaderboard.summary.OnClickStandingsPlayer;
+import markus.wieland.unofficalcupoftheleaderboard.ui.leaderboard.summary.PlayerSummaryFragment;
 import markus.wieland.unofficalcupoftheleaderboard.ui.totd.TOTDMainFragment;
+import markus.wieland.unofficalcupoftheleaderboard.ui.totd.childs.TOTDFragment;
 
-public class LeaderboardActivity extends DefaultActivity implements LeaderboardAdapter.COTDStandingsPlayerOnItemInteractListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class LeaderboardActivity extends DefaultActivity implements OnClickStandingsPlayer, BottomNavigationView.OnNavigationItemSelectedListener {
 
     private LeaderBoardGlobalFragment globalStandings;
     private LeaderBoardMonthFragment monthStandings;
     private TOTDMainFragment totdFragment;
+    private AboutFragment aboutFragment;
 
     private BottomNavigationView bottomNavigationView;
+
+    private Fragment currentFragment;
 
     public LeaderboardActivity() {
         super(R.layout.activity_leaderboard);
@@ -42,11 +41,13 @@ public class LeaderboardActivity extends DefaultActivity implements LeaderboardA
     @Override
     public void initializeViews() {
         globalStandings = new LeaderBoardGlobalFragment();
-        globalStandings.setCotdStandingsPlayerOnItemInteractListener(this);
         monthStandings = new LeaderBoardMonthFragment();
-        monthStandings.setCotdStandingsPlayerOnItemInteractListener(this);
         totdFragment = new TOTDMainFragment();
-        totdFragment.setTotdItemInteractListener(this::onClick);
+        aboutFragment = new AboutFragment();
+
+        globalStandings.setCotdStandingsPlayerOnItemInteractListener(this);
+        monthStandings.setCotdStandingsPlayerOnItemInteractListener(this);
+        totdFragment.setTotdOnClickListener(this::onClick);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
 
@@ -54,33 +55,29 @@ public class LeaderboardActivity extends DefaultActivity implements LeaderboardA
         TOTDFragment totdDetailFragment = new TOTDFragment();
         totdDetailFragment.load(totd);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.activity_leaderboard_frame_layout
-                        , totdDetailFragment)
+                .replace(R.id.activity_leaderboard_frame_layout, totdDetailFragment)
                 .addToBackStack(totdFragment.getTag())
                 .commit();
     }
 
     @Override
     public void execute() {
-        TrackmaniaCOTDApi trackmaniaCOTDApi = new TrackmaniaCOTDApi(this);
-        trackmaniaCOTDApi.getGlobalLeaderboard(this::onLoad);
-
         showFragment(totdFragment);
     }
 
-    private void onLoad(COTDLeaderBoard globalLeaderBoard) {
-        globalStandings.update(globalLeaderBoard == null ? new ArrayList<>() : globalLeaderBoard.getStandings(), true);
-    }
-
     @Override
-    public void onClick(COTDStandingsPlayer cotdStandingsPlayer) {
-        startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(cotdStandingsPlayer.getUrl())));
+    public void onClick(COTDStandingsPlayer cotdStandingsPlayer, int year, int month) {
+        PlayerSummaryFragment playerSummaryFragment = new PlayerSummaryFragment(cotdStandingsPlayer, year, month);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.activity_leaderboard_frame_layout, playerSummaryFragment)
+                .addToBackStack(currentFragment.getTag())
+                .commit();
     }
 
     private void showFragment(Fragment fragment) {
+        currentFragment = fragment;
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.activity_leaderboard_frame_layout
-                        , fragment)
+                .replace(R.id.activity_leaderboard_frame_layout, fragment)
                 .commit();
     }
 
@@ -90,11 +87,12 @@ public class LeaderboardActivity extends DefaultActivity implements LeaderboardA
             showFragment(globalStandings);
         } else if (item.getItemId() == R.id.menu_activity_leaderboard_bottom_monthly) {
             showFragment(monthStandings);
-        } else {
+        } else if (item.getItemId() == R.id.menu_activity_leaderboard_bottom_totd) {
             showFragment(totdFragment);
+        } else {
+            showFragment(aboutFragment);
         }
         return true;
     }
-
 
 }

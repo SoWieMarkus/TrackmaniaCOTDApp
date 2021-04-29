@@ -3,6 +3,7 @@ package markus.wieland.unofficalcupoftheleaderboard.api.models.totd.leaderboard;
 import com.google.gson.annotations.SerializedName;
 
 import markus.wieland.unofficalcupoftheleaderboard.api.general.Player;
+import markus.wieland.unofficalcupoftheleaderboard.helper.StyleConverter;
 
 public class TOTDLeaderBoardPlayer extends Player {
 
@@ -35,5 +36,9 @@ public class TOTDLeaderBoardPlayer extends Player {
 
     public void setTimeStamp(String timeStamp) {
         this.timeStamp = timeStamp;
+    }
+
+    public String getPositionAsString(){
+        return StyleConverter.getStringFromPosition(position);
     }
 }

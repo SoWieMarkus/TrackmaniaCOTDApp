@@ -17,7 +17,7 @@ public class TrackmaniaGetRequest<T> extends GetRequest<T> {
         try {
             URL uri = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) uri.openConnection();
-            connection.addRequestProperty("User-Agent","trackmania-leaderboard-app by SoWieMarkus (Markus#2348) https://github.com/SoWieMarkus/TrackmaniaCOTDApp");
+            connection.addRequestProperty("User-Agent", "trackmania-leaderboard-app by SoWieMarkus (Markus#2348) https://github.com/SoWieMarkus/TrackmaniaCOTDApp");
             String result = parseResult(connection);
             requestResultListener.onLoad(parse(result));
         } catch (Exception e) {

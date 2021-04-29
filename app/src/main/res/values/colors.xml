@@ -15,5 +15,6 @@
 
     <color name="greenBackground">#FC004C36</color>
     <color name="accent_line">#999999</color>
+    <color name="light_text">#DDDDDD</color>
 
 </resources>

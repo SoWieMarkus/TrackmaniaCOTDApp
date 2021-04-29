@@ -1,4 +1,4 @@
-package markus.wieland.unofficalcupoftheleaderboard.ui;
+package markus.wieland.unofficalcupoftheleaderboard.helper;
 
 import android.view.View;
 import android.widget.LinearLayout;

@@ -80,7 +80,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textColor="?attr/light_text_color" />
 
         </LinearLayout>
     </LinearLayout>

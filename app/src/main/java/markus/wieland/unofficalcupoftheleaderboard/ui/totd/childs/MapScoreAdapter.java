@@ -1,4 +1,4 @@
-package markus.wieland.unofficalcupoftheleaderboard.ui.totd;
+package markus.wieland.unofficalcupoftheleaderboard.ui.totd.childs;
 
 import android.view.LayoutInflater;
 import android.view.View;

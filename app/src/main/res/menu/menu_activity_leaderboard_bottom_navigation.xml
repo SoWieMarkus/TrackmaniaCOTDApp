@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menu_activity_leaderboard_totd"
+        android:id="@+id/menu_activity_leaderboard_bottom_totd"
         android:icon="@drawable/ic_day"
         android:title="@string/activity_leaderboard_title_totd" />
     <item
@@ -15,6 +15,7 @@
         android:icon="@drawable/ic_leaderboard_month"
         android:title="@string/activity_leaderboard_title_monthly" />
     <item
+        android:id="@+id/menu_activity_leaderboard_bottom_about"
         android:icon="@drawable/ic_info"
-        android:title="Item" />
+        android:title="@string/activity_leaderboard_title_about" />
 </menu>

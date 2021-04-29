@@ -4,6 +4,8 @@ import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import java.time.LocalDateTime;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
@@ -18,15 +20,18 @@ import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.COTDStandings
 import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.overview.MonthOverView;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.overview.Overview;
 import markus.wieland.unofficalcupoftheleaderboard.helper.DateManager;
-import markus.wieland.unofficalcupoftheleaderboard.ui.ListFragment;
+import markus.wieland.unofficalcupoftheleaderboard.helper.ListFragment;
+import markus.wieland.unofficalcupoftheleaderboard.helper.OnClickListener;
 import markus.wieland.unofficalcupoftheleaderboard.ui.leaderboard.LeaderboardAdapter.LeaderboardViewHolder;
+import markus.wieland.unofficalcupoftheleaderboard.ui.leaderboard.summary.OnClickStandingsPlayer;
 
-public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, LeaderboardViewHolder> implements SearchView.OnQueryTextListener,LeaderboardAdapter.COTDStandingsPlayerOnItemInteractListener {
+public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, LeaderboardViewHolder> implements SwipeRefreshLayout.OnRefreshListener,SearchView.OnQueryTextListener, OnClickListener<COTDStandingsPlayer> {
 
-    private LeaderboardAdapter.COTDStandingsPlayerOnItemInteractListener cotdStandingsPlayerOnItemInteractListener;
+    private OnClickStandingsPlayer onClickStandingsPlayer;
+
+    private TrackmaniaCOTDApi trackmaniaCOTDApi;
 
     private Overview overview;
-    private TrackmaniaCOTDApi trackmaniaCOTDApi;
     private int overViewIndex;
 
     private Button buttonLeftMonth;
@@ -36,6 +41,8 @@ public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, 
 
     private TextView textViewMonthName;
 
+    private SwipeRefreshLayout swipeRefreshLayout;
+
     public LeaderBoardMonthFragment() {
         super(R.layout.fragment_leaderboard_month,
                 R.id.fragment_leader_board_monthly_recycler_view,
@@ -44,8 +51,8 @@ public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, 
         overViewIndex = 0;
     }
 
-    public void setCotdStandingsPlayerOnItemInteractListener(LeaderboardAdapter.COTDStandingsPlayerOnItemInteractListener cotdStandingsPlayerOnItemInteractListener) {
-        this.cotdStandingsPlayerOnItemInteractListener = cotdStandingsPlayerOnItemInteractListener;
+    public void setCotdStandingsPlayerOnItemInteractListener(OnClickStandingsPlayer onClickStandingsPlayer) {
+        this.onClickStandingsPlayer = onClickStandingsPlayer;
     }
 
     @Override
@@ -60,6 +67,7 @@ public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, 
         buttonRightMonth = findViewById(R.id.fragment_leader_board_monthly_right);
         textViewMonthName = findViewById(R.id.item_leader_board_name);
         searchView = findViewById(R.id.fragment_leader_board_monthly_search_view);
+        swipeRefreshLayout = findViewById(R.id.fragment_leader_board_monthly_swipe_refresh);
     }
 
     @Override
@@ -79,17 +87,18 @@ public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, 
             overViewIndex = 0;
         }
         searchView.setOnQueryTextListener(this);
-
+        swipeRefreshLayout.setOnRefreshListener(this);
         updateButtons();
 
     }
 
     private void updateButtons() {
         buttonLeftMonth.setEnabled(overViewIndex - 1 >= 0);
-        buttonRightMonth.setEnabled(overViewIndex + 1 < overview.getOverView().size());
-        buttonLeftMonth.setText(DateManager.getNameOfMonth(overview.getOverView().get(overViewIndex).getMonth() - 1, TextStyle.SHORT_STANDALONE));
-        buttonRightMonth.setText(DateManager.getNameOfMonth(overview.getOverView().get(overViewIndex).getMonth() + 1, TextStyle.SHORT_STANDALONE));
-        textViewMonthName.setText(DateManager.getNameOfMonth(overview.getOverView().get(overViewIndex).getMonth()) + " " + overview.getOverView().get(overViewIndex).getYear());
+        buttonRightMonth.setEnabled(overViewIndex + 1 < overview.getMonths().size());
+        buttonLeftMonth.setText(DateManager.getNameOfMonth(overview.getMonths().get(overViewIndex).getMonth() - 1, TextStyle.SHORT_STANDALONE));
+        buttonRightMonth.setText(DateManager.getNameOfMonth(overview.getMonths().get(overViewIndex).getMonth() + 1, TextStyle.SHORT_STANDALONE));
+        textViewMonthName.setText(DateManager.getStringFromMonthAndYear(overview.getMonths().get(overViewIndex).getYear(),
+                overview.getMonths().get(overViewIndex).getMonth()));
     }
 
     @Override
@@ -101,12 +110,12 @@ public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, 
     }
 
     private Overview getDefaultOverview() {
-        Overview overview = new Overview();
+        Overview defaultOverview = new Overview();
         MonthOverView monthOverView = new MonthOverView();
         monthOverView.setMonth(LocalDateTime.now().getMonthValue());
         monthOverView.setYear(LocalDateTime.now().getYear());
-        overview.setOverView(new ArrayList<>(Collections.singletonList(monthOverView)));
-        return overview;
+        defaultOverview.setMonths(new ArrayList<>(Collections.singletonList(monthOverView)));
+        return defaultOverview;
     }
 
     private void onLoad(Overview overview) {
@@ -114,31 +123,37 @@ public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, 
             overview = getDefaultOverview();
         }
 
-        if (overview.getOverView().size() != this.overview.getOverView().size())
-            overViewIndex = overview.getOverView().size() - 1;
+        if (overview.getMonths().size() != this.overview.getMonths().size())
+            overViewIndex = overview.getMonths().size() - 1;
         this.overview = overview;
         search();
     }
 
 
     private void search() {
-        MonthOverView monthOverView = overview.getOverView().get(overViewIndex);
+        MonthOverView monthOverView = overview.getMonths().get(overViewIndex);
         updateButtons();
+        buttonLeftMonth.setEnabled(false);
+        buttonRightMonth.setEnabled(false);
         update(null, true);
         trackmaniaCOTDApi.getLeaderboard(this::onLoad, monthOverView.getYear(), monthOverView.getMonth());
     }
 
     private void onLoad(COTDLeaderBoard cotdLeaderBoard) {
+        swipeRefreshLayout.setRefreshing(false);
+        updateButtons();
         if (cotdLeaderBoard == null)
             update(new ArrayList<>(), true);
-        else if (cotdLeaderBoard.getMonth() == overview.getOverView().get(overViewIndex).getMonth())
+        else if (cotdLeaderBoard.getMonth() == overview.getMonths().get(overViewIndex).getMonth())
             update(cotdLeaderBoard.getStandings(), true);
     }
 
     @Override
     public void onClick(COTDStandingsPlayer cotdStandingsPlayer) {
-        if (cotdStandingsPlayerOnItemInteractListener != null)
-            cotdStandingsPlayerOnItemInteractListener.onClick(cotdStandingsPlayer);
+        if (onClickStandingsPlayer != null)
+            onClickStandingsPlayer.onClick(cotdStandingsPlayer,
+                    overview.getMonths().get(overViewIndex).getYear(),
+                    overview.getMonths().get(overViewIndex).getMonth());
     }
 
     @Override
@@ -158,5 +173,10 @@ public class LeaderBoardMonthFragment extends ListFragment<COTDStandingsPlayer, 
         update(standingsPlayers, false);
         if (!standingsPlayers.isEmpty()) recyclerView.scrollToPosition(0);
         return true;
+    }
+
+    @Override
+    public void onRefresh() {
+        search();
     }
 }

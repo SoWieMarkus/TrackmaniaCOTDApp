@@ -3,29 +3,28 @@ package markus.wieland.unofficalcupoftheleaderboard.ui.leaderboard;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.bumptech.glide.Glide;
+
 import markus.wieland.defaultappelements.uielements.adapter.DefaultViewHolder;
 import markus.wieland.defaultappelements.uielements.adapter.QueryableAdapter;
-import markus.wieland.defaultappelements.uielements.adapter.iteractlistener.OnItemInteractListener;
 import markus.wieland.unofficalcupoftheleaderboard.R;
 import markus.wieland.unofficalcupoftheleaderboard.api.models.cotd.COTDStandingsPlayer;
+import markus.wieland.unofficalcupoftheleaderboard.helper.OnClickListener;
 
 public class LeaderboardAdapter extends QueryableAdapter<String, COTDStandingsPlayer, LeaderboardAdapter.LeaderboardViewHolder> {
 
-    public interface COTDStandingsPlayerOnItemInteractListener extends OnItemInteractListener<COTDStandingsPlayer> {
-        void onClick(COTDStandingsPlayer cotdStandingsPlayer);
-    }
-
-    public LeaderboardAdapter(COTDStandingsPlayerOnItemInteractListener cotdStandingsPlayerOnItemInteractListener) {
+    public LeaderboardAdapter(OnClickListener<COTDStandingsPlayer> cotdStandingsPlayerOnItemInteractListener) {
         super(cotdStandingsPlayerOnItemInteractListener);
     }
 
     @Override
-    public COTDStandingsPlayerOnItemInteractListener getOnItemInteractListener() {
-        return (COTDStandingsPlayerOnItemInteractListener) super.getOnItemInteractListener();
+    public OnClickListener<COTDStandingsPlayer> getOnItemInteractListener() {
+        return (OnClickListener<COTDStandingsPlayer>) super.getOnItemInteractListener();
     }
 
     @NonNull
@@ -40,6 +39,7 @@ public class LeaderboardAdapter extends QueryableAdapter<String, COTDStandingsPl
         private TextView itemLeaderBoardRank;
         private TextView itemLeaderBoardDisplayName;
         private TextView itemLeaderBoardTrophies;
+        private ImageView itemLeaderBoardFlag;
 
         public LeaderboardViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -51,6 +51,7 @@ public class LeaderboardAdapter extends QueryableAdapter<String, COTDStandingsPl
             itemLeaderBoardPoints = findViewById(R.id.item_leader_board_points);
             itemLeaderBoardRank = findViewById(R.id.item_leader_board_rank);
             itemLeaderBoardTrophies = findViewById(R.id.item_leader_board_trophies);
+            itemLeaderBoardFlag = findViewById(R.id.item_leader_board_player_flag);
         }
 
         @Override
@@ -58,7 +59,8 @@ public class LeaderboardAdapter extends QueryableAdapter<String, COTDStandingsPl
             itemLeaderBoardDisplayName.setText(cotdStandingsPlayer.getDisplayName());
             itemLeaderBoardPoints.setText(cotdStandingsPlayer.getPointsAsString());
             itemLeaderBoardRank.setText(cotdStandingsPlayer.getPositionAsString());
-            itemLeaderBoardTrophies.setText(cotdStandingsPlayer.buildTrophyString());
+            itemLeaderBoardTrophies.setText(cotdStandingsPlayer.buildTrophyString(itemView.getContext()));
+            Glide.with(itemView.getContext()).load(cotdStandingsPlayer.getZone().getFlagUrl()).into(itemLeaderBoardFlag);
             itemView.setOnClickListener(view -> getOnItemInteractListener().onClick(cotdStandingsPlayer));
         }
 

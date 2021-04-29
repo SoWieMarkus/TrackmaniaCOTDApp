@@ -2,7 +2,9 @@ package markus.wieland.unofficalcupoftheleaderboard.api.general;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Player {
+import markus.wieland.defaultappelements.uielements.adapter.QueryableEntity;
+
+public class Player implements QueryableEntity<String> {
 
     @SerializedName("accountid")
     private String accountId;
@@ -15,27 +17,25 @@ public class Player {
         return accountId;
     }
 
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
-
     public String getDisplayName() {
         return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
     }
 
     public Zone getZone() {
         return zone;
     }
 
-    public void setZone(Zone zone) {
-        this.zone = zone;
-    }
-
     public String getUrl() {
         return "https://trackmania.io/#/player/" + accountId;
+    }
+
+    @Override
+    public String getId() {
+        return getAccountId();
+    }
+
+    @Override
+    public String getStringToApplyQuery() {
+        return getDisplayName();
     }
 }

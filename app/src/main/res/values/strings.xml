@@ -5,4 +5,10 @@
     <string name="empty_message">No results.</string>
     <string name="global_leaderboard">Global Leaderboard</string>
     <string name="activity_leaderboard_title_totd" translatable="false">Track of the day</string>
+    <string name="activity_leaderboard_title_about">About</string>
+    <string name="fragment_totd_title_totd_standings" translatable="false">Leaderboard</string>
+    <string name="fragment_totd_title_cotd_results">Results</string>
+    <string name="best_finish">Best finish:</string>
+    <string name="average_position">Ø position:</string>
+    <string name="content_description_empty">No results.</string>
 </resources>
