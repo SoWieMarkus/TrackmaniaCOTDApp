@@ -4,6 +4,10 @@
 
 This project is based on the work of <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwjM2OoIEWwoiKy1CqMY9oKJ2EXqWvch_gPIrOzL8WtsSoYZ-KjsiZpR3Ygt3U08VW9fxFpRyv6R/pubhtml#">pointerzio</a>! Unfortunately he stopped working on this project.
 
+<a href="https://play.google.com/store/apps/details?id=markus.wieland.unofficalcupoftheleaderboard">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Build status" width="50%">
+ </a>
+
 ## Special thanks
 
 * <a href="https://github.com/codecat">@CodeCat</a> for letting me use the trackmania.io API
