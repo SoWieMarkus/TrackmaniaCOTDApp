@@ -1,5 +1,11 @@
 # Trackmania COTD App
 
+<img src="https://github.com/SoWieMarkus/TrackmaniaCOTDApp/blob/main/screenshots/english/Screenshot_20210429-133205_Cup%20of%20the%20Day%20Leaderboard.jpg">
+<img src="https://github.com/SoWieMarkus/TrackmaniaCOTDApp/blob/main/screenshots/english/Screenshot_20210429-133220_Cup%20of%20the%20Day%20Leaderboard.jpg">
+<img src="https://github.com/SoWieMarkus/TrackmaniaCOTDApp/blob/main/screenshots/english/Screenshot_20210429-133230_Cup%20of%20the%20Day%20Leaderboard.jpg">
+<img src="https://github.com/SoWieMarkus/TrackmaniaCOTDApp/blob/main/screenshots/english/Screenshot_20210429-133249_Cup%20of%20the%20Day%20Leaderboard.jpg">
+<img src="https://github.com/SoWieMarkus/TrackmaniaCOTDApp/blob/main/screenshots/english/Screenshot_20210429-133327_Cup%20of%20the%20Day%20Leaderboard.jpg">
+
 DISCLAIMER! This project is not related to Nadeo! Its a fan made project to generate and display a leaderboard for the Trackmania Cup of the Day.
 
 This project is based on the work of <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwjM2OoIEWwoiKy1CqMY9oKJ2EXqWvch_gPIrOzL8WtsSoYZ-KjsiZpR3Ygt3U08VW9fxFpRyv6R/pubhtml#">pointerzio</a>! Unfortunately he stopped working on this project.
