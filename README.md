@@ -1,6 +1,6 @@
 # Trackmania COTD App
 
-DISCLAIMER! This project is not related to Nadeo! Its a fan made project to generate and display a leaderboard for the Trackmania Cup of the Day.
+**DISCLAIMER! This project is not related to Nadeo! Its a fan made project to generate and display a leaderboard for the Trackmania Cup of the Day.**
 
 This project is based on the work of <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwjM2OoIEWwoiKy1CqMY9oKJ2EXqWvch_gPIrOzL8WtsSoYZ-KjsiZpR3Ygt3U08VW9fxFpRyv6R/pubhtml#">pointerzio</a>! Unfortunately he stopped working on this project.
 
@@ -11,6 +11,9 @@ This project is based on the work of <a href="https://docs.google.com/spreadshee
 * <a href="https://github.com/Bmandk">@Bmandk</a> and axelalex2 for helping me debug the Trackmania style parser ^^
 * <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwjM2OoIEWwoiKy1CqMY9oKJ2EXqWvch_gPIrOzL8WtsSoYZ-KjsiZpR3Ygt3U08VW9fxFpRyv6R/pubhtml#">pointerzio</a>
 
+## Screenshots
+
+<img width="20%" src="https://github.com/SoWieMarkus/TrackmaniaCOTDApp/blob/main/screenshots/english/Screenshot_20210429-133205_Cup%20of%20the%20Day%20Leaderboard.jpg"><img width="20%" src="https://github.com/SoWieMarkus/TrackmaniaCOTDApp/blob/main/screenshots/english/Screenshot_20210429-133220_Cup%20of%20the%20Day%20Leaderboard.jpg"><img width="20%" src="https://github.com/SoWieMarkus/TrackmaniaCOTDApp/blob/main/screenshots/english/Screenshot_20210429-133230_Cup%20of%20the%20Day%20Leaderboard.jpg"><img width="20%" src="https://github.com/SoWieMarkus/TrackmaniaCOTDApp/blob/main/screenshots/english/Screenshot_20210429-133249_Cup%20of%20the%20Day%20Leaderboard.jpg"><img width="20%" src="https://github.com/SoWieMarkus/TrackmaniaCOTDApp/blob/main/screenshots/english/Screenshot_20210429-133327_Cup%20of%20the%20Day%20Leaderboard.jpg">
 
 ## Questions?
 
@@ -23,7 +26,7 @@ Feel free to contact me!
 
 * <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDRestAPI">Trackmania COTD Rest API</a> (my own API). See documentation <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDRestAPI#readme">here</a>.
 * <a href="https://trackmania.io/#/totd">trackmania.io</a> API from <a href="https://github.com/codecat">@CodeCat</a>
-* <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDBot">trackmania.io havesting bot</a> collecting data from trackmanio.io and imports it into my <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDRestAPI">Trackmania COTD Rest API</a>
+* <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDBot">trackmania.io havesting bot</a> collecting data from trackmania.io and imports it into my <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDRestAPI">Trackmania COTD Rest API</a>
 * <a href="https://github.com/PhilJay/MPAndroidChart">MPAndroidChart</a> to display the pie chart inside the player detail fragment
 * <a href="https://github.com/SoWieMarkus/DefaultAppComponents">DefaultAppComponents</a>
 
