@@ -1,6 +1,6 @@
 # Trackmania COTD App
 
-DISCLAIMER! This project is not related to Nadeo! Its a fan made project to generate and display a leaderboard for the Trackmania Cup of the Day.
+**DISCLAIMER! This project is not related to Nadeo! Its a fan made project to generate and display a leaderboard for the Trackmania Cup of the Day.**
 
 This project is based on the work of <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwjM2OoIEWwoiKy1CqMY9oKJ2EXqWvch_gPIrOzL8WtsSoYZ-KjsiZpR3Ygt3U08VW9fxFpRyv6R/pubhtml#">pointerzio</a>! Unfortunately he stopped working on this project.
 
