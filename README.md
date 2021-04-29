@@ -16,7 +16,7 @@ DISCLAIMER! This project is not related to Nadeo! Its a fan made project to gene
 
 My <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDBot">trackmania.io havesting bot</a> is running continuously on a Raspberry Pi. Every 10 minutes it gets the results of the most recent Cup of the Day from <a href="https://trackmania.io/#/cotd">trackmania.io</a> and sends the data to my <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDRestAPI">Trackmania COTD Rest API</a>. 
 
-Check out the <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDBot#readme">trackmania.io havesting bot documentation</a> and the <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDRestAPI#readme">trackmania.io havesting bot documentation</a>
+Check out the <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDBot#readme">trackmania.io havesting bot documentation</a> and the <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDRestAPI#readme">API documentation</a>
 
 ### Get information about the Track of the Day
 
