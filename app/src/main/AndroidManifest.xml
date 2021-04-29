@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UnofficalCupofTheLeaderboard">
 
-        <activity android:name="markus.wieland.trackmaniacotdapp.LeaderboardActivity">
+        <activity android:name="markus.wieland.trackmaniacotdapp.LeaderboardActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

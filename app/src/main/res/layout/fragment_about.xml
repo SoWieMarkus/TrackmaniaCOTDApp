@@ -70,6 +70,7 @@
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
+                android:layout_marginTop="8dp"
                 android:padding="4dp"
                 android:text="@string/about_questions_title"
                 android:textColor="?attr/main_text_color"
