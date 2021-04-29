@@ -22,7 +22,6 @@
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:padding="8dp"
-            android:text="TextView"
             android:textColor="?attr/main_text_color"
             android:textSize="24sp"
             android:textStyle="bold|italic"
@@ -36,8 +35,7 @@
                 android:id="@+id/fragment_totd_main_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableRight="@drawable/ic_right"
-                android:text="Button"
+                android:drawableEnd="@drawable/ic_right"
                 android:textColor="?attr/main_text_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -49,12 +47,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_left"
-                android:text="Button"
                 android:textColor="?attr/main_text_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/fragment_totd_main_right"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RtlHardcoded" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
@@ -67,11 +65,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:contentDescription="@string/empty_message"
             app:srcCompat="@drawable/empty_icon" />
 
         <TextView
@@ -103,7 +103,6 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-
     <ProgressBar
         android:id="@+id/fragment_totd_main_progress_bar"
         style="?android:attr/progressBarStyle"
@@ -113,4 +112,5 @@
         app:layout_constraintEnd_toEndOf="@+id/fragment_totd_main_swipe_refresh"
         app:layout_constraintStart_toStartOf="@+id/fragment_totd_main_swipe_refresh"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

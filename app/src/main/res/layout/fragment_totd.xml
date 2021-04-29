@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -26,6 +24,7 @@
                 android:layout_height="120dp"
                 android:layout_margin="8dp"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/content_description_map_thumbnail"
                 app:srcCompat="@drawable/ic_default_image" />
 
             <LinearLayout
@@ -40,14 +39,12 @@
                     android:id="@+id/fragment_totd_map"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
                     android:textSize="22sp" />
 
                 <TextView
                     android:id="@+id/fragment_totd_author"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
                     android:textColor="?attr/main_text_color" />
 
             </LinearLayout>
@@ -58,7 +55,7 @@
             android:layout_height="1dp"
             android:layout_margin="8dp"
             android:background="@color/accent_line"
-            android:orientation="vertical"/>
+            android:orientation="vertical" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fragment_totd_recycler_view"
@@ -77,10 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:tabIndicatorColor="@android:color/white"
         app:tabSelectedTextColor="@android:color/white"
-        app:tabTextColor="#ccc">
-
-
-    </com.google.android.material.tabs.TabLayout>
+        app:tabTextColor="#ccc" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/fragment_totd_view_pager"
@@ -89,8 +83,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_totd_tab_layout">
-
-    </androidx.viewpager.widget.ViewPager>
+        app:layout_constraintTop_toBottomOf="@+id/fragment_totd_tab_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

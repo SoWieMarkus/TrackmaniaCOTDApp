@@ -44,7 +44,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -53,12 +53,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:id="@+id/item_leader_board_player_flag"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:contentDescription="@string/content_description_flag"
                     app:srcCompat="@drawable/empty_icon" />
 
                 <TextView
@@ -68,7 +70,6 @@
                     android:layout_marginStart="4dp"
                     android:ellipsize="end"
                     android:fontFamily="sans-serif-medium"
-                    android:text="TextView"
                     android:textColor="?attr/main_text_color"
                     android:textSize="18sp"
                     android:textStyle="bold|italic"
@@ -80,7 +81,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:text="TextView"
                 android:textColor="?attr/light_text_color" />
 
         </LinearLayout>
@@ -91,7 +91,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:fontFamily="sans-serif-thin"
-            android:text="TextView"
             android:textColor="?attr/main_text_color"
             android:textSize="18sp"
             android:textStyle="italic"

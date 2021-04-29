@@ -10,8 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -36,12 +38,13 @@
                 android:id="@+id/fragment_player_summary_flag"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:contentDescription="@string/content_description_flag"
                 app:srcCompat="@drawable/ic_default_image" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:orientation="vertical"
                 android:padding="8dp">
 
@@ -49,7 +52,6 @@
                     android:id="@+id/fragment_player_summary_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
                     android:textColor="?attr/main_text_color"
                     android:textSize="18sp"
                     android:textStyle="bold|italic"
@@ -59,14 +61,12 @@
                     android:id="@+id/fragment_player_summary_trophies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
                     android:textColor="?attr/light_text_color" />
 
                 <TextView
                     android:id="@+id/fragment_player_summary_average"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
                     android:textColor="?attr/light_text_color" />
             </LinearLayout>
 
@@ -79,7 +79,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:background="@color/accent_line"
-            android:orientation="vertical"/>
+            android:orientation="vertical" />
 
     </LinearLayout>
 
@@ -143,11 +143,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/fragment_player_summary_swipe_refresh"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:contentDescription="@string/content_description_empty"
             app:srcCompat="@drawable/empty_icon" />
 
         <TextView

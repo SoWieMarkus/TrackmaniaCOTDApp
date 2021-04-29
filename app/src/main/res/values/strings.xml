@@ -1,14 +1,23 @@
 <resources>
-    <string name="app_name">Unoffical Cupof the Leaderboard</string>
+    <string name="app_name">Cup of the Day Leaderboard</string>
     <string name="activity_leaderboard_title_global">Global</string>
     <string name="activity_leaderboard_title_monthly">Monthly</string>
     <string name="empty_message">No results.</string>
     <string name="global_leaderboard">Global Leaderboard</string>
-    <string name="activity_leaderboard_title_totd" translatable="false">Track of the day</string>
+    <string name="activity_leaderboard_title_totd" translatable="false">Track of the Day</string>
     <string name="activity_leaderboard_title_about">About</string>
     <string name="fragment_totd_title_totd_standings" translatable="false">Leaderboard</string>
     <string name="fragment_totd_title_cotd_results">Results</string>
     <string name="best_finish">Best finish:</string>
     <string name="average_position">Ø position:</string>
     <string name="content_description_empty">No results.</string>
+    <string name="content_description_flag">Flag</string>
+    <string name="content_description_map_thumbnail">Map thumbnail</string>
+    <string name="content_description_medal">Medal</string>
+    <string name="dot" translatable="false">•</string>
+    <string name="about_disclaimer">Disclaimer: The leaderboards shown in this app are NOT official. This app is not related to Nadeo!</string>
+    <string name="about_credits_title">Special thanks</string>
+    <string name="about_credits"><a href="https://github.com/codecat">@CodeCat</a> for letting me use the trackmania.io API\n\n<a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwjM2OoIEWwoiKy1CqMY9oKJ2EXqWvch_gPIrOzL8WtsSoYZ-KjsiZpR3Ygt3U08VW9fxFpRyv6R/pubhtml#">pointerzio</a>, on whose work this project is based.\n\n<a href="https://www.twitch.tv/granadyy">GranaDy</a> for letting me use his "granaBonk" emote inside my app. Make sure to check out his Twitch channel for Cup of the Day WINNER POV and some juicy WHEEL action.\n\n<a href="https://github.com/Bmandk">@Bmandk</a> and axelalex2 for helping me debug the Trackmania style parser</string>
+    <string name="about_questions_title">Questions/Feedback?</string>
+    <string name="about_questions">Feel free to contact me!\n\nDiscord: Markus#2348\n\nFor more information check out the project on <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDApp">GitHub</a>.</string>
 </resources>
