@@ -20,7 +20,104 @@ Check out the <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDBot#readme">
 
 ### Get information about the Track of the Day
 
+The app uses the API <a href="trackmania.io">trackmania.io</a> by <a href="https://github.com/codecat">@CodeCat</a>. If you want to use this API for your own projects, <a href="https://github.com/codecat">@CodeCat</a> allowes the usage of the API under the following conditions:
 
+* The API is unsupported. If CodeCat removes/changes something, CodeCat will (likely) not give notice of it, and you'll have to deal with it yourself.
+* The API is undocumented. You're on your own to figure out how the API works and what you need from it.
+* Use a proper user agent header so that CodeCat can see how you're using the API.
+* There are no hard limitations in place, so please be respectful of CodeCat's server resources as well as Nadeo's. Cache stuff! Please let CodeCat know if you're planning to do any kind of "bulk" requests!
+* Let CodeCat know what you're working on! CodeCat is always curious and it lets CodeCat understand how people are using the API and who to contact about certain things if any contact is needed.
+* If you're still unsure about your use of the API, feel free to DM Miss#8888 with any further questions.
+
+#### Get all tracks of a the current month
+
+GET `https://trackmania.io/api/totd/0`
+
+```
+{
+  year: 2021,
+  month: 4,
+  lastday: 30,
+  days: [
+    {
+      campaignid: 8383,
+      map: {
+        author: "62c59cd2-4981-43cc-a6d2-7feaf96ceeb1",
+        name: "$F00[$F10L$F20O$F30L$F50]$F60P$F70l$F80i$F90n$FA0k$FC0o$FD0 $FE0v$FF01",
+        authorScore: 41529,
+        goldScore: 45000,
+        silverScore: 50000,
+        bronzeScore: 63000,
+        collectionName: "Stadium",
+        environment: "Stadium",
+        filename: "[LOL]Plinko v1.Map.Gbx",
+        isPlayable: true,
+        mapId: "0308f5f1-380e-4394-a737-dc031e1b6d2d",
+        mapUid: "17B5XtQBJ_nukdrylfT7Pj1q1C1",
+        submitter: "62c59cd2-4981-43cc-a6d2-7feaf96ceeb1",
+        timestamp: "2021-03-01T02:26:22+00:00",
+        fileUrl: "https://prod.trackmania.core.nadeo.online/storageObjects/792ea4f6-1a13-45e3-b860-6c40c62a33f3",
+        thumbnailUrl: "https://prod.trackmania.core.nadeo.online/storageObjects/5063b9b8-da6c-4cf3-a0d3-f17cf0cb6d16.jpg",
+        authordisplayname: "prince10bee",
+        submitterdisplayname: "prince10bee",
+        exchangeid: 23641
+      },
+      weekday: 3,
+      monthday: 1,
+      leaderboarduid: "bf597bc1-a8c9-4dfa-9ae9-40a3a5e4a0bf"
+    },
+  ...
+  ]
+}
+
+```
+
+#### Get all tracks of a specific month
+
+GET `https://trackmania.io/api/totd/<index>`
+
+0 is always the index of the current month. If you want to get months from the past you have to increment the index. Index 1 will be the month before the current month and so on.
+
+#### Get time leaderboard of a specific map
+
+With the `mapUid` and the `leaderboarduid` you can get the best times of this map.
+
+GET `https://trackmania.io/api/leaderboard/<leaderboarduid>/<mapUid>`
+
+```
+{
+  tops: [
+    {
+      accountid: "0da0a251-20e8-4219-86eb-7d9c52847779",
+      displayname: "Cemkoo",
+      zone: {
+        name: "Turkey",
+        flag: "TUR",
+        parent: {
+          name: "Europe",
+          flag: "europe",
+          parent: {
+            name: "World",
+            flag: "WOR"
+          }
+        }
+      },
+      position: 1,
+      time: 33045,
+      points: 0,
+      filename: "Replays\Downloaded\ad5a3da2-7231-4456-bfc0-8212a0d48c5b_0da0a251-20e8-4219-86eb-7d9c52847779_(0'33''4).replay.gbx",
+      timestamp: "2021-04-28T21:00:47+00:00",
+      url: "/api/download/ghost/ef0a6aef-cb39-4f38-b2c4-4dd41030ec37"
+  },
+  ...
+}
+
+
+
+
+
+
+CodeCat has a nice feature to page the results. The page parameter can be any number bigger or equal to zero. If you call https://trackmania.io/api/cotd/0 you will get the first (normally) 25 results. If you need more information you can call https://trackmania.io/api/cotd/1 afterwards to get the next 25 results.
 
 
 
