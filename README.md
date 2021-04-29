@@ -18,8 +18,8 @@ Thanks to:
 
 Feel free to contact me!
 
-Twitter: <a href="https://twitter.com/SoWieMarkus">@SoWieMarkus</a>
-Discord: Markus#2348
+* Twitter: <a href="https://twitter.com/SoWieMarkus">@SoWieMarkus</a>
+* Discord: Markus#2348
 
 ## Used technologies
 
