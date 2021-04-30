@@ -1,4 +1,4 @@
-<img src="https://github.com/SoWieMarkus/TrackmaniaCOTDApp/blob/main/screenshots/cotd_bg_black.png">
+<img src="https://github.com/SoWieMarkus/TrackmaniaCOTDApp/blob/main/screenshots/cotd_no_bg.png">
 
 # Trackmania COTD App
 
