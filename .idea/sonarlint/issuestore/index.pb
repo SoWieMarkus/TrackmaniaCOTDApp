@@ -45,3 +45,5 @@ Kapp/src/main/java/markus/wieland/trackmaniacotdapp/api/TrackmaniaioAPI.java,1\
 Qapp/src/main/java/markus/wieland/trackmaniacotdapp/api/models/totd/TOTDMonth.java,f\c\fca6f4e85932cb4edea5ddfb0a66e7f88733efd7
 |
 Lapp/src/main/java/markus/wieland/trackmaniacotdapp/api/models/totd/TOTD.java,e\f\ef0ba6256df12c946f7f668b3e450029d53448cd
+›
+kapp/src/main/java/markus/wieland/trackmaniacotdapp/ui/totd/childs/totd_standings/TOTDStandingsFragment.java,3\d\3d840440257916772dfbfdc89effba8f57ef9149
