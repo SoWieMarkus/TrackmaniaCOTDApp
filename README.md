@@ -36,7 +36,7 @@ Feel free to contact me!
 
 ## How does it work
 
-I am using the results of the Cup of the Day from trackmania.io. There are some days missing or incompleted. Those dates are:
+I am using the results of the Cup of the Day from trackmania.io. There are some days missing or incomplete. Those dates are:
 
 * 10.12.2020, reason unknown
 * 04.01.2021, reason unknown. GranaDy said on this day you were able to vote.
