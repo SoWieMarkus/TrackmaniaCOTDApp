@@ -55,7 +55,7 @@ Check out the <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDBot#readme">
 
 ### Get information about the Track of the Day
 
-The app uses the API of <a href="trackmania.io">trackmania.io</a> by <a href="https://github.com/codecat">@CodeCat</a>. If you want to use this API for your own projects, <a href="https://github.com/codecat">@CodeCat</a> allowes the usage of the API under the following conditions:
+The app is using the API of <a href="trackmania.io">trackmania.io</a> by <a href="https://github.com/codecat">@CodeCat</a>. If you want to use this API for your own projects, <a href="https://github.com/codecat">@CodeCat</a> allowes the usage of the API under the following conditions:
 
 * The API is unsupported. If CodeCat removes/changes something, CodeCat will (likely) not give notice of it, and you'll have to deal with it yourself.
 * The API is undocumented. You're on your own to figure out how the API works and what you need from it.
