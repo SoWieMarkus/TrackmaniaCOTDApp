@@ -45,7 +45,7 @@ I am using the results of the Cup of the Day from trackmania.io. There are some 
 
 I did not correct any of this results! They are still as you can find them on trackmania.io. There are other leaderboards who corrected those days by hand. This can lead to different results.
 
-For creating the leaderboard I am using the point system used by <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwjM2OoIEWwoiKy1CqMY9oKJ2EXqWvch_gPIrOzL8WtsSoYZ-KjsiZpR3Ygt3U08VW9fxFpRyv6R/pubhtml#">pointerzio</a>.
+I am using the point system used by <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwjM2OoIEWwoiKy1CqMY9oKJ2EXqWvch_gPIrOzL8WtsSoYZ-KjsiZpR3Ygt3U08VW9fxFpRyv6R/pubhtml#">pointerzio</a> for creating the leaderboard.
 
 ### Get results from Cup of the Day
 
