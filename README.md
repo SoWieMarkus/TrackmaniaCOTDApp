@@ -1,3 +1,5 @@
+<img src="https://github.com/SoWieMarkus/TrackmaniaCOTDApp/blob/main/screenshots/cotd_no_bg.png">
+
 # Trackmania COTD App
 
 **DISCLAIMER! This project is not related to Nadeo! Its a fan made project to generate and display a leaderboard for the Trackmania Cup of the Day.**
