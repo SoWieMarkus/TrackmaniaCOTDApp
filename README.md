@@ -16,7 +16,7 @@ This project is based on the work of <a href="https://docs.google.com/spreadshee
 * <a href="https://www.twitch.tv/granadyy">GranaDy</a> for letting me use his "granaBonk" emote inside my app. Make sure to check out his Twitch channel for Cup of the Day WINNER POV and some juicy WHEEL action.
 * <a href="https://github.com/Bmandk">@Bmandk</a> and axelalex2 for helping me debug the Trackmania style parser ^^
 * <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwjM2OoIEWwoiKy1CqMY9oKJ2EXqWvch_gPIrOzL8WtsSoYZ-KjsiZpR3Ygt3U08VW9fxFpRyv6R/pubhtml#">pointerzio</a>
-* \_\_mo\_\_
+* \_\_mo\_\_ for the header (check out his <a href="https://docs.google.com/spreadsheets/d/1I79FPd5cly52nMUY38zEWzhDK0bwW0EXbTsPZrF4JxE/edit#gid=217730040">leaderboard</a>)
 
 ## Screenshots
 
