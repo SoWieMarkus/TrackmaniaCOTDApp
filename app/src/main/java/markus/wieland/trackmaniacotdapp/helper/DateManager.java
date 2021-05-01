@@ -2,8 +2,11 @@ package markus.wieland.trackmaniacotdapp.helper;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.ZoneId;
 import java.time.format.TextStyle;
+import java.util.Calendar;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class DateManager {
 
@@ -33,6 +36,15 @@ public class DateManager {
         return getNameOfDay(LocalDateTime.of(year, month, day, 0,0)) + "., " + StyleConverter.build(day, 2) + "."
                 + StyleConverter.build(month, 2) + "."
                 + year;
+    }
+
+    public static LocalDateTime getCurrentCOTDDate() {
+        Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Europe/Berlin"));
+        TimeZone tz = c.getTimeZone();
+        ZoneId zid = tz.toZoneId();
+        LocalDateTime today = LocalDateTime.ofInstant(c.toInstant(), zid);
+        if (today.getHour() < 19) today = today.minusDays(1);
+        return today;
     }
 
 }

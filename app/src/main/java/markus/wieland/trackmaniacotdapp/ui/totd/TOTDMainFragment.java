@@ -86,7 +86,9 @@ public class TOTDMainFragment extends ListFragment<TOTD, TOTDAdapter.TOTDViewHol
     }
 
     private void updateButtons() {
-        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime now = DateManager.getCurrentCOTDDate();
+
+
         textViewMonthName.setText(DateManager.getStringFromMonthAndYear(now.getYear(), now.minusMonths(index).getMonthValue()));
         buttonRightMonth.setEnabled(index > 0);
         buttonLeftMonth.setEnabled(!isLastPossibleMonth());
@@ -118,11 +120,11 @@ public class TOTDMainFragment extends ListFragment<TOTD, TOTDAdapter.TOTDViewHol
     }
 
     private LocalDateTime getCurrentMonth() {
-        return LocalDateTime.now().minusMonths(index);
+        return DateManager.getCurrentCOTDDate().minusMonths(index);
     }
 
     public boolean isLastPossibleMonth() {
-        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime now = DateManager.getCurrentCOTDDate();
         now = now.minusMonths(index);
         return now.getYear() == 2020 && now.getMonthValue() == 7;
     }
