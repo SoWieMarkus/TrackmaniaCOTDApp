@@ -19,7 +19,7 @@ public class StyleConverter {
     }
 
     public static String getStringFromPosition(int position){
-        if (position == 0) return "DNF";
+        if (position == 0 || position == -1) return "DNF";
         return position + ".";
     }
 

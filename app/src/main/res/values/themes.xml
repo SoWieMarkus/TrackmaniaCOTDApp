@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.UnofficalCupofTheLeaderboard" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#009B5F</item>
+        <item name="colorPrimary">@color/accent</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/darkBackground</item>
         <!-- Secondary brand color. -->

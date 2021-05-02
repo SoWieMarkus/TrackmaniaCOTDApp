@@ -119,7 +119,7 @@ public class COTDStandingsPlayer implements QueryableEntity<String> {
         if (amountThird != 0)
             trophies += BRONZE + " " + amountThird + " ";
         if (trophies.length() == 0)
-            trophies = context.getString(R.string.best_finish) + " " + bestResult + ".";
+            trophies = context.getString(R.string.best_finish) + " " + StyleConverter.getStringFromPosition(bestResult);
         return trophies.trim();
     }
 

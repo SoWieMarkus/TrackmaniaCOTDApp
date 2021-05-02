@@ -48,6 +48,7 @@ public class PlayerSummary {
 
         List<PieEntry> entries = new ArrayList<>();
         for (int i = 1; i <= 8; i++) {
+            if (positions.get("Top" + (i * 8)).isEmpty()) continue;
             entries.add(new PieEntry(positions.get("Top" + (i * 8)).size(), "Top" + (i * 8)));
         }
 
