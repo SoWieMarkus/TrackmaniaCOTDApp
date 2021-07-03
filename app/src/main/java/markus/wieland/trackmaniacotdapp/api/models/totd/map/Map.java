@@ -4,6 +4,8 @@ import android.text.SpannableStringBuilder;
 
 import com.google.gson.annotations.SerializedName;
 
+import markus.wieland.trackmaniacotdapp.api.general.TMioPlayer;
+
 public class Map {
 
     @SerializedName("author")
@@ -26,6 +28,16 @@ public class Map {
     private String authorDisplayName;
     @SerializedName("thumbnailUrl")
     private String thumbnailUrl;
+    @SerializedName("authorplayer")
+    private TMioPlayer authorPlayer;
+
+    public TMioPlayer getAuthorPlayer() {
+        return authorPlayer;
+    }
+
+    public void setAuthorPlayer(TMioPlayer authorPlayer) {
+        this.authorPlayer = authorPlayer;
+    }
 
     public String getAuthor() {
         return author;

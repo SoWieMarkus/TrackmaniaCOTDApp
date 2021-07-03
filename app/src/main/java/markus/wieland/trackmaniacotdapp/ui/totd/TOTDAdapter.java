@@ -68,7 +68,7 @@ public class TOTDAdapter extends DefaultAdapter<TOTD, TOTDAdapter.TOTDViewHolder
         public void bindItemToViewHolder(TOTD totd) {
             Glide.with(itemView.getContext()).load(totd.getMap().getThumbnailUrl()).into(itemTotdThumbnail);
             itemTotdName.setText(totd.getMap().getColoredMapName());
-            itemTotdAuthor.setText(totd.getMap().getAuthorDisplayName());
+            itemTotdAuthor.setText(totd.getMap().getAuthorPlayer().getName());
             itemTotdScore.setText(StyleConverter.buildAsTimeString(totd.getMap().getAuthorScore()));
             itemView.setOnClickListener(view -> getOnItemInteractListener().onClick(totd));
             itemTotdDay.setText(DateManager.getDateWithDayName(totdMonth.getYear(), totdMonth.getMonth(), totd.getDayOfMonth()));

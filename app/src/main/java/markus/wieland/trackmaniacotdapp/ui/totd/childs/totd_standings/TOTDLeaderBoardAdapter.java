@@ -55,10 +55,10 @@ public class TOTDLeaderBoardAdapter extends QueryableAdapter<String, TOTDLeaderB
 
         @Override
         public void bindItemToViewHolder(TOTDLeaderBoardPlayer totdLeaderBoardPlayer) {
-            Glide.with(itemView.getContext()).load(totdLeaderBoardPlayer.getZone().getFlagUrl()).into(itemStandingsFlag);
+            Glide.with(itemView.getContext()).load(totdLeaderBoardPlayer.getTmioPlayer().getZone().getFlagUrl()).into(itemStandingsFlag);
             itemStandingsRank.setText(totdLeaderBoardPlayer.getPositionAsString());
             itemStandingsScore.setText(StyleConverter.buildAsTimeString(totdLeaderBoardPlayer.getTime()));
-            itemStandingsName.setText(totdLeaderBoardPlayer.getDisplayName());
+            itemStandingsName.setText(totdLeaderBoardPlayer.getTmioPlayer().getName());
             itemView.setOnClickListener(v -> getOnItemInteractListener().onClick(totdLeaderBoardPlayer));
         }
     }

@@ -101,7 +101,7 @@ public class TOTDFragment extends DefaultFragment {
         if (getActivity() == null) return;
         Glide.with(getActivity()).load(currentTOTD.getMap().getThumbnailUrl()).into(imageViewThumbnail);
         textViewMapName.setText(currentTOTD.getMap().getColoredMapName());
-        textViewMapAuthor.setText(currentTOTD.getMap().getAuthorDisplayName());
+        textViewMapAuthor.setText(currentTOTD.getMap().getAuthorPlayer().getName());
         trackmaniaioAPI.getTOTDLeaderBoard(this::onLoad,  currentTOTD.getLeaderBoardUid(),currentTOTD.getMap().getMapUid());
         trackmaniaCOTDApi.getCOTDResult(this::onLoad, currentTOTD.getYear(), currentTOTD.getMonth(), currentTOTD.getDayOfMonth());
     }
