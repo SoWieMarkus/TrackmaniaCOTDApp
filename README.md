@@ -73,37 +73,73 @@ GET `https://trackmania.io/api/totd/0`
 
 ```
 {
-  year: 2021,
-  month: 4,
-  lastday: 30,
-  days: [
-    {
-      campaignid: 8383,
-      map: {
-        author: "62c59cd2-4981-43cc-a6d2-7feaf96ceeb1",
-        name: "$F00[$F10L$F20O$F30L$F50]$F60P$F70l$F80i$F90n$FA0k$FC0o$FD0 $FE0v$FF01",
-        authorScore: 41529,
-        goldScore: 45000,
-        silverScore: 50000,
-        bronzeScore: 63000,
-        collectionName: "Stadium",
-        environment: "Stadium",
-        filename: "[LOL]Plinko v1.Map.Gbx",
-        isPlayable: true,
-        mapId: "0308f5f1-380e-4394-a737-dc031e1b6d2d",
-        mapUid: "17B5XtQBJ_nukdrylfT7Pj1q1C1",
-        submitter: "62c59cd2-4981-43cc-a6d2-7feaf96ceeb1",
-        timestamp: "2021-03-01T02:26:22+00:00",
-        fileUrl: "https://prod.trackmania.core.nadeo.online/storageObjects/792ea4f6-1a13-45e3-b860-6c40c62a33f3",
-        thumbnailUrl: "https://prod.trackmania.core.nadeo.online/storageObjects/5063b9b8-da6c-4cf3-a0d3-f17cf0cb6d16.jpg",
-        authordisplayname: "prince10bee",
-        submitterdisplayname: "prince10bee",
-        exchangeid: 23641
-      },
-      weekday: 3,
-      monthday: 1,
-      leaderboarduid: "bf597bc1-a8c9-4dfa-9ae9-40a3a5e4a0bf"
-    },
+        campaignid: 11545,
+        map: {
+                author: "d46fb45d-d422-47c9-9785-67270a311e25",
+                name: "Perfecto Bonko Mapo",
+                mapType: "",
+                authorScore: 41216,
+                goldScore: 44000,
+                silverScore: 50000,
+                bronzeScore: 62000,
+                collectionName: "Stadium",
+                environment: "Stadium",
+                filename: "Perfecto Bonko Mapo.Map.Gbx",
+                isPlayable: true,
+                mapId: "a6dffa8a-4b5a-4c7b-bf23-0826eb5e081d",
+                mapUid: "ogZoUILPyiBb7xknMQJVnSaKBa",
+                submitter: "d46fb45d-d422-47c9-9785-67270a311e25",
+                timestamp: "2021-06-21T20:36:26+00:00",
+                fileUrl: "https://prod.trackmania.core.nadeo.online/storageObjects/b561acab-838d-4cba-9434-ffa91f21f378",
+                thumbnailUrl: "https://prod.trackmania.core.nadeo.online/storageObjects/3236113e-599b-4b4a-a083-992836368dc1.jpg",
+                authorplayer: {
+                        name: "eLconn21",
+                        tag: "$900L$A00O$C00U$D00D",
+                        id: "d46fb45d-d422-47c9-9785-67270a311e25",
+                        zone: {
+                                name: "Středočeský kraj",
+                                flag: "Středočeský kraj",
+                                parent: {
+                                        name: "Czechia",
+                                        flag: "CZE",
+                                        parent: {
+                                                name: "Europe",
+                                                flag: "europe",
+                                                parent: {
+                                                        name: "World",
+                                                        flag: "WOR"
+                                                }
+                                        }
+                                }
+                        }
+                },
+                submitterplayer: {
+                        name: "eLconn21",
+                        tag: "$900L$A00O$C00U$D00D",
+                        id: "d46fb45d-d422-47c9-9785-67270a311e25",
+                        zone: {
+                                name: "Středočeský kraj",
+                                flag: "Středočeský kraj",
+                                parent: {
+                                        name: "Czechia",
+                                        flag: "CZE",
+                                        parent: {
+                                                name: "Europe",
+                                                flag: "europe",
+                                                parent: {
+                                                        name: "World",
+                                                        flag: "WOR"
+                                                }
+                                         }
+                                }
+                        }
+                },
+                exchangeid: 31272
+        },
+        weekday: 3,
+        monthday: 1,
+        leaderboarduid: "37d0910f-2a9a-451b-9758-f69b739ed4a9"
+},,
   ...
   ]
 }
