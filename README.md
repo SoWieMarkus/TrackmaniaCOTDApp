@@ -159,30 +159,37 @@ With the `mapUid` and the `leaderboarduid` you can get the best times of this ma
 GET `https://trackmania.io/api/leaderboard/<leaderboarduid>/<mapUid>`
 
 ```
-{
-  tops: [
-    {
-      accountid: "0da0a251-20e8-4219-86eb-7d9c52847779",
-      displayname: "Cemkoo",
-      zone: {
-        name: "Turkey",
-        flag: "TUR",
-        parent: {
-          name: "Europe",
-          flag: "europe",
-          parent: {
-            name: "World",
-            flag: "WOR"
-          }
-        }
-      },
-      position: 1,
-      time: 33045,
-      points: 0,
-      filename: "Replays\Downloaded\ad5a3da2-7231-4456-bfc0-8212a0d48c5b_0da0a251-20e8-4219-86eb-7d9c52847779_(0'33''4).replay.gbx",
-      timestamp: "2021-04-28T21:00:47+00:00",
-      url: "/api/download/ghost/ef0a6aef-cb39-4f38-b2c4-4dd41030ec37"
-  },
+tops: [
+        {
+                player: {
+                        name: "JakeRay1995",
+                        tag: "$N $Z$S$FFFD$F00K$N $Z",
+                        id: "dcf4dd03-7801-4fab-af0c-63854970b3de",
+                        zone: {
+                                name: "Denmark",
+                                flag: "DEN",
+                                parent: {
+                                        name: "Europe",
+                                        flag: "europe",
+                                        parent: {
+                                                name: "World",
+                                                flag: "WOR"
+                                        }
+                                }
+                        },
+                        meta: {
+                                twitch: "jakeray",
+                                youtube: "UCiwpOv6yWbWlcx0CczebZfw"
+                        }
+                },
+                position: 1,
+                time: 42670,
+                points: 0,
+                filename: "Replays\Downloaded\02f57965-6864-4aae-add5-db185ffa4008_dcf4dd03-7801-4fab-af0c-63854970b3de_(0'42''67).replay.gbx",
+                timestamp: "2021-07-04T18:10:56+00:00",
+                url: "/api/download/ghost/35961b84-9f31-4c19-80a6-e4324dd509e7",
+                removed: false
+        },
   ...
 }
 ```
