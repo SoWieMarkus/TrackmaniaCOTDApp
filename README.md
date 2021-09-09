@@ -45,6 +45,7 @@ I am using the results of the Cup of the Day from trackmania.io. There are some 
 * 04.01.2021, reason unknown. GranaDy said on this day you were able to vote.
 * 27.-28.01.2021 Server issues
 * 29.-30.01.2021 reason unknown
+* 08.09.2021 Server issues
 
 I did not correct any of these results! They are still as you can find them on trackmania.io. There are other leaderboards who corrected those days by hand. This can lead to different results.
 
