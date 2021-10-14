@@ -74,7 +74,8 @@ As I said earlier, the API can change. It is therefore very likely that this doc
 #### Get all tracks of a the current month
 
 GET `https://trackmania.io/api/totd/0`
-Example: <a href="https://trackmania.io/api/totd/0">TOTD of current month</a>
+
+* Example: <a href="https://trackmania.io/api/totd/0">TOTD of current month</a>
 
 ```javascript
 {
@@ -154,8 +155,9 @@ Example: <a href="https://trackmania.io/api/totd/0">TOTD of current month</a>
 #### Get all tracks of a specific month
 
 GET `https://trackmania.io/api/totd/<index>`
-Example: <a href="https://trackmania.io/api/totd/0">TOTD of current month</a>
-Example: <a href="https://trackmania.io/api/totd/1">TOTD of last month</a>
+
+* Example: <a href="https://trackmania.io/api/totd/0">TOTD of current month</a>
+* Example: <a href="https://trackmania.io/api/totd/1">TOTD of last month</a>
 
 0 is always the index of the current month. If you want to get months from the past you have to increment the index. Index 1 will be the month before the current month and so on.
 
@@ -164,7 +166,8 @@ Example: <a href="https://trackmania.io/api/totd/1">TOTD of last month</a>
 With the `mapUid` and the `leaderboarduid` you can get the best times of this map.
 
 GET `https://trackmania.io/api/leaderboard/<leaderboarduid>/<mapUid>`
-Example: <a href="https://trackmania.io/api/leaderboard/37d0910f-2a9a-451b-9758-f69b739ed4a9/ogZoUILPyiBb7xknMQJVnSaKBa">Leaderboard of the example TOTD/a>
+
+* Example: <a href="https://trackmania.io/api/leaderboard/37d0910f-2a9a-451b-9758-f69b739ed4a9/ogZoUILPyiBb7xknMQJVnSaKBa">Leaderboard of the example TOTD</a>
 
 ```javascript
 tops: [
