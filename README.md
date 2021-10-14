@@ -66,11 +66,15 @@ The app is using the API of <a href="trackmania.io">trackmania.io</a> by <a href
 * Use a proper user agent header so that CodeCat can see how you're using the API.
 * There are no hard limitations in place, so please be respectful of CodeCat's server resources as well as Nadeo's. Cache stuff! Please let CodeCat know if you're planning to do any kind of "bulk" requests!
 * Let CodeCat know what you're working on! CodeCat is always curious and it lets CodeCat understand how people are using the API and who to contact about certain things if any contact is needed.
-* If you're still unsure about your use of the API, feel free to DM Miss#8888 with any further questions.
+* If you're still unsure about your use of the API, feel free to DM Miss#8888 with any further questions. 
+* To stay up to date you can also join the <a href="https://discord.gg/a4JBRM2Q">trackmania-io Discord Server</a>. Sometimes CodeCat will post updates there!
+
+As I said earlier, the API can change. It is therefore very likely that this documentation is not up to date. I still try to keep it up to date!
 
 #### Get all tracks of a the current month
 
 GET `https://trackmania.io/api/totd/0`
+Example: <a href="https://trackmania.io/api/totd/0">TOTD of current month</a>
 
 ```javascript
 {
@@ -150,6 +154,8 @@ GET `https://trackmania.io/api/totd/0`
 #### Get all tracks of a specific month
 
 GET `https://trackmania.io/api/totd/<index>`
+Example: <a href="https://trackmania.io/api/totd/0">TOTD of current month</a>
+Example: <a href="https://trackmania.io/api/totd/1">TOTD of last month</a>
 
 0 is always the index of the current month. If you want to get months from the past you have to increment the index. Index 1 will be the month before the current month and so on.
 
@@ -158,6 +164,7 @@ GET `https://trackmania.io/api/totd/<index>`
 With the `mapUid` and the `leaderboarduid` you can get the best times of this map.
 
 GET `https://trackmania.io/api/leaderboard/<leaderboarduid>/<mapUid>`
+Example: <a href="https://trackmania.io/api/leaderboard/37d0910f-2a9a-451b-9758-f69b739ed4a9/ogZoUILPyiBb7xknMQJVnSaKBa">Leaderboard of the example TOTD/a>
 
 ```javascript
 tops: [
