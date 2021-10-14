@@ -72,7 +72,7 @@ The app is using the API of <a href="trackmania.io">trackmania.io</a> by <a href
 
 GET `https://trackmania.io/api/totd/0`
 
-```
+```javascript
 {
         campaignid: 11545,
         map: {
@@ -159,7 +159,7 @@ With the `mapUid` and the `leaderboarduid` you can get the best times of this ma
 
 GET `https://trackmania.io/api/leaderboard/<leaderboarduid>/<mapUid>`
 
-```
+```javascript
 tops: [
         {
                 player: {
