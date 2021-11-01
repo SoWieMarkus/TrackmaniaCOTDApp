@@ -73,3 +73,13 @@ capp/src/main/java/markus/wieland/trackmaniacotdapp/api/models/totd/leaderboard/
 iapp/src/main/java/markus/wieland/trackmaniacotdapp/api/models/totd/leaderboard/TOTDLeaderBoardPlayer.java,d\8\d8674a34d7a64f3addd9622d28d5847835ec47c2
 ~
 Napp/src/main/java/markus/wieland/trackmaniacotdapp/api/general/TMioPlayer.java,6\9\69d296fbd4f3137fc8bab86ca6b9e3b352821b5c
+
+Oapp/src/main/java/markus/wieland/trackmaniacotdapp/api/models/totd/map/Map.java,f\b\fbb6f153661b274f7bd6c61f193e26a9911e1a08
+{
+Kapp/src/main/java/markus/wieland/trackmaniacotdapp/ui/totd/TOTDAdapter.java,b\e\be43fbee8cb6c2e70394fcbd1b594d7cb9c07996
+@
+local.properties,0\7\0712df971a99ac4d2fccb8e0fb19f377f3374cca
+?
+settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
+œ
+lapp/src/main/java/markus/wieland/trackmaniacotdapp/ui/totd/childs/totd_standings/TOTDLeaderBoardAdapter.java,d\7\d735465331437c9644cba6d4c531583ac03a2a52

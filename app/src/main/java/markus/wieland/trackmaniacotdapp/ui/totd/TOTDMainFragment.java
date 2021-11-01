@@ -89,7 +89,7 @@ public class TOTDMainFragment extends ListFragment<TOTD, TOTDAdapter.TOTDViewHol
         LocalDateTime now = DateManager.getCurrentCOTDDate();
 
 
-        textViewMonthName.setText(DateManager.getStringFromMonthAndYear(now.getYear(), now.minusMonths(index).getMonthValue()));
+        textViewMonthName.setText(DateManager.getStringFromMonthAndYear(now.minusMonths(index).getYear(), now.minusMonths(index).getMonthValue()));
         buttonRightMonth.setEnabled(index > 0);
         buttonLeftMonth.setEnabled(!isLastPossibleMonth());
         buttonLeftMonth.setText(DateManager.getNameOfMonth(now.minusMonths(index + (long) 1).getMonthValue(), TextStyle.SHORT_STANDALONE));
