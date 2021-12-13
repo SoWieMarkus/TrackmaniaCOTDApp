@@ -42,7 +42,7 @@ Feel free to contact me!
 I am using the results of the Cup of the Day from trackmania.io. There are some days missing or incomplete. Those dates are:
 
 * 10.12.2020, reason unknown
-* 04.01.2021, reason unknown. GranaDy said on this day you were able to vote.
+* 04.01.2021, reason unknown. GranaDy said on this day you were able to vote. (<a href="https://www.youtube.com/watch?v=aUu36O4dN0I">Spam Clip</a>)
 * 27.-28.01.2021 Server issues
 * 29.-30.01.2021 reason unknown
 * 08.09.2021 Server issues
