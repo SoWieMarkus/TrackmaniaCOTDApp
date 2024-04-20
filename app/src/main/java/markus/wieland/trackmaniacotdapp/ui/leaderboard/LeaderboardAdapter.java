@@ -60,7 +60,9 @@ public class LeaderboardAdapter extends QueryableAdapter<String, COTDStandingsPl
             itemLeaderBoardPoints.setText(cotdStandingsPlayer.getPointsAsString());
             itemLeaderBoardRank.setText(cotdStandingsPlayer.getPositionAsString());
             itemLeaderBoardTrophies.setText(cotdStandingsPlayer.buildTrophyString(itemView.getContext()));
-            Glide.with(itemView.getContext()).load(cotdStandingsPlayer.getZone().getFlagUrl()).into(itemLeaderBoardFlag);
+            if (cotdStandingsPlayer.getZone() != null) {
+                Glide.with(itemView.getContext()).load(cotdStandingsPlayer.getZone().getFlagUrl()).into(itemLeaderBoardFlag);
+            }
             itemView.setOnClickListener(view -> getOnItemInteractListener().onClick(cotdStandingsPlayer));
         }
 

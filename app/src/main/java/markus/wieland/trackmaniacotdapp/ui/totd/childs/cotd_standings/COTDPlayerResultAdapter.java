@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import markus.wieland.defaultappelements.uielements.adapter.DefaultViewHolder;
 import markus.wieland.defaultappelements.uielements.adapter.QueryableAdapter;
 import markus.wieland.trackmaniacotdapp.R;
+import markus.wieland.trackmaniacotdapp.api.general.Zone;
 import markus.wieland.trackmaniacotdapp.api.models.cotd.COTDPlayerResult;
 import markus.wieland.trackmaniacotdapp.helper.OnClickListener;
 
@@ -58,7 +59,10 @@ public class COTDPlayerResultAdapter extends QueryableAdapter<String, COTDPlayer
             itemStandingsName.setText(cotdPlayerResult.getDisplayName());
             itemStandingsScore.setText(cotdPlayerResult.getPoints());
             itemStandingsRank.setText(cotdPlayerResult.getPositionAsString());
-            Glide.with(itemView.getContext()).load(cotdPlayerResult.getZone().getFlagUrl()).into(itemStandingsFlag);
+            Zone zone = cotdPlayerResult.getZone();
+            if (zone != null) {
+                Glide.with(itemView.getContext()).load(cotdPlayerResult.getZone().getFlagUrl()).into(itemStandingsFlag);
+            }
             itemView.setOnClickListener(view -> getOnItemInteractListener().onClick(cotdPlayerResult));
         }
     }

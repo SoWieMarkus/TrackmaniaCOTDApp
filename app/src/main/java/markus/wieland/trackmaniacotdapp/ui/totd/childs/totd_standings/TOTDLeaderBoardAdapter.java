@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 
 import markus.wieland.defaultappelements.uielements.adapter.DefaultViewHolder;
 import markus.wieland.defaultappelements.uielements.adapter.QueryableAdapter;
+import markus.wieland.trackmaniacotdapp.api.general.Zone;
 import markus.wieland.trackmaniacotdapp.helper.OnClickListener;
 import markus.wieland.trackmaniacotdapp.R;
 import markus.wieland.trackmaniacotdapp.api.models.totd.leaderboard.TOTDLeaderBoardPlayer;
@@ -55,7 +56,11 @@ public class TOTDLeaderBoardAdapter extends QueryableAdapter<String, TOTDLeaderB
 
         @Override
         public void bindItemToViewHolder(TOTDLeaderBoardPlayer totdLeaderBoardPlayer) {
-            Glide.with(itemView.getContext()).load(totdLeaderBoardPlayer.getTmioPlayer().getZone().getFlagUrl()).into(itemStandingsFlag);
+
+            Zone zone = totdLeaderBoardPlayer.getTmioPlayer().getZone();
+            if (zone != null) {
+                Glide.with(itemView.getContext()).load(zone.getFlagUrl()).into(itemStandingsFlag);
+            }
             itemStandingsRank.setText(totdLeaderBoardPlayer.getPositionAsString());
             itemStandingsScore.setText(StyleConverter.buildAsTimeString(totdLeaderBoardPlayer.getTime()));
             itemStandingsName.setText(totdLeaderBoardPlayer.getTmioPlayer().getName());
