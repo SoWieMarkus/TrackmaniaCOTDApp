@@ -17,7 +17,7 @@
     <string name="about_credits_title">Besonderer Dank</string>
     <string name="about_credits"><a href="https://github.com/codecat">@CodeCat</a>, dass ich die trackmania.io API nutzen darf.\n\n<a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVwwjM2OoIEWwoiKy1CqMY9oKJ2EXqWvch_gPIrOzL8WtsSoYZ-KjsiZpR3Ygt3U08VW9fxFpRyv6R/pubhtml#">pointerzio</a>, auf dessen Arbeit dieses Projekt beruht.\n\n<a href="https://www.twitch.tv/granadyy">GranaDy</a>, dass ich sein "granaBonk" Emote in meiner App nutzen darf. Schaut bei seinem Twitch channel vorbei und genießt die Cup of the Day WINNER POV und juicy WHEEL Action.\n\n<a href="https://github.com/Bmandk">@Bmandk</a> und axelalex2, für ihre Hilfe beim Debuggen des Trackmania Style Parsers.</string>
     <string name="about_questions_title">Fragen/Feedback?</string>
-    <string name="about_questions">Kontaktier mich!\n\nDiscord: Markus#2348\n\nMehr Informationen findest du auf <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDApp">GitHub</a>.</string>
+    <string name="about_questions">Kontaktier mich!\n\nDiscord: sowiemarkus\n\nMehr Informationen findest du auf <a href="https://github.com/SoWieMarkus/TrackmaniaCOTDApp">GitHub</a>.</string>
 
 
 </resources>
