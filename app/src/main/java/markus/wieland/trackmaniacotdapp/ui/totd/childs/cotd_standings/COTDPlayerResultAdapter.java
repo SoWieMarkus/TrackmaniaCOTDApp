@@ -1,5 +1,6 @@
 package markus.wieland.trackmaniacotdapp.ui.totd.childs.cotd_standings;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,9 +61,11 @@ public class COTDPlayerResultAdapter extends QueryableAdapter<String, COTDPlayer
             itemStandingsScore.setText(cotdPlayerResult.getPoints());
             itemStandingsRank.setText(cotdPlayerResult.getPositionAsString());
             Zone zone = cotdPlayerResult.getZone();
-            if (zone != null) {
-                Glide.with(itemView.getContext()).load(cotdPlayerResult.getZone().getFlagUrl()).into(itemStandingsFlag);
-            }
+            Context context = itemView.getContext();
+            Glide.with(context)
+                    .load(zone == null ? R.drawable.empty_icon : zone.getFlagUrl())
+                    .into(itemStandingsFlag);
+
             itemView.setOnClickListener(view -> getOnItemInteractListener().onClick(cotdPlayerResult));
         }
     }

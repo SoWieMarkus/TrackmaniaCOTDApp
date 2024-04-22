@@ -1,5 +1,6 @@
 package markus.wieland.trackmaniacotdapp.ui.totd.childs.totd_standings;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,14 +59,16 @@ public class TOTDLeaderBoardAdapter extends QueryableAdapter<String, TOTDLeaderB
         public void bindItemToViewHolder(TOTDLeaderBoardPlayer totdLeaderBoardPlayer) {
 
             Zone zone = totdLeaderBoardPlayer.getTmioPlayer().getZone();
-            if (zone != null) {
-                Glide.with(itemView.getContext()).load(zone.getFlagUrl()).into(itemStandingsFlag);
-            }
+            Context context = itemView.getContext();
+
+            Glide.with(context)
+                    .load(zone == null ? R.drawable.empty_icon : zone.getFlagUrl())
+                    .into(itemStandingsFlag);
+
             itemStandingsRank.setText(totdLeaderBoardPlayer.getPositionAsString());
             itemStandingsScore.setText(StyleConverter.buildAsTimeString(totdLeaderBoardPlayer.getTime()));
             itemStandingsName.setText(totdLeaderBoardPlayer.getTmioPlayer().getName());
             itemView.setOnClickListener(v -> getOnItemInteractListener().onClick(totdLeaderBoardPlayer));
         }
     }
-
 }

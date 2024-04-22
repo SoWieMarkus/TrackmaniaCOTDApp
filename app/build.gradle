@@ -9,7 +9,7 @@ android {
         applicationId "markus.wieland.unofficalcupoftheleaderboard"
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode 8
+        versionCode 9
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

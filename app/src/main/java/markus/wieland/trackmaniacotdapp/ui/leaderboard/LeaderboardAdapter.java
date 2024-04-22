@@ -1,5 +1,6 @@
 package markus.wieland.trackmaniacotdapp.ui.leaderboard;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.bumptech.glide.Glide;
 import markus.wieland.defaultappelements.uielements.adapter.DefaultViewHolder;
 import markus.wieland.defaultappelements.uielements.adapter.QueryableAdapter;
 import markus.wieland.trackmaniacotdapp.R;
+import markus.wieland.trackmaniacotdapp.api.general.Zone;
 import markus.wieland.trackmaniacotdapp.api.models.cotd.COTDStandingsPlayer;
 import markus.wieland.trackmaniacotdapp.helper.OnClickListener;
 
@@ -60,9 +62,11 @@ public class LeaderboardAdapter extends QueryableAdapter<String, COTDStandingsPl
             itemLeaderBoardPoints.setText(cotdStandingsPlayer.getPointsAsString());
             itemLeaderBoardRank.setText(cotdStandingsPlayer.getPositionAsString());
             itemLeaderBoardTrophies.setText(cotdStandingsPlayer.buildTrophyString(itemView.getContext()));
-            if (cotdStandingsPlayer.getZone() != null) {
-                Glide.with(itemView.getContext()).load(cotdStandingsPlayer.getZone().getFlagUrl()).into(itemLeaderBoardFlag);
-            }
+            Zone zone = cotdStandingsPlayer.getZone();
+            Context context = itemView.getContext();
+            Glide.with(context)
+                    .load(zone == null ? R.drawable.empty_icon : zone.getFlagUrl())
+                    .into(itemLeaderBoardFlag);
             itemView.setOnClickListener(view -> getOnItemInteractListener().onClick(cotdStandingsPlayer));
         }
 
